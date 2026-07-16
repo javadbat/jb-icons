@@ -1,0 +1,39 @@
+:host {
+  display: inline-block;
+  height: var(--icon-size);
+  aspect-ratio: 1;
+  line-height: 0;
+}
+
+svg {
+  display: block;
+  height: 100%;
+  width: auto;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+circle {
+  stroke: var(--icon-color);
+  fill: var(--jb-icon-search-fill, transparent);
+  stroke-width: 1.5625rem;
+}
+
+.spin-line-group {
+  transform-origin: center;
+  fill: transparent;
+}
+
+.spin-line-group rect {
+  fill: transparent;
+}
+
+.spin-line-group path {
+  fill: none;
+  stroke: var(--icon-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: 0.2s;
+  stroke-width: 2.1875rem;
+  transform-origin: center;
+}

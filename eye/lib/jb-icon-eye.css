@@ -1,0 +1,42 @@
+:host {
+  display: inline-block;
+  aspect-ratio: 1;
+  line-height: 0;
+}
+
+svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  box-sizing: border-box;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.eye-line {
+  d: path("M 0 60 C 40 100 80 100 120 60");
+  fill: none;
+  stroke: var(--icon-color);
+  stroke-width: 0.875rem;
+  transition: 0.3s;
+}
+
+circle {
+  fill: var(--icon-color);
+  opacity: 0;
+  transition: 0.3s 0s;
+}
+
+:host([open]) .eye-line {
+  d: path("M 10 60 C 30 20 100 20 110 60");
+}
+
+:host([open]) circle {
+  opacity: 1;
+  transform: translateX(0.5rem);
+  transition: 0.2s 0.2s;
+}
+
+:host([open]:dir(ltr)) circle {
+  transform: translateX(-0.5rem);
+}

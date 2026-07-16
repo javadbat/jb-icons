@@ -1,0 +1,37 @@
+{
+  "name": "jb-icon",
+  "description": "Icon components for the JB Design System",
+  "type": "module",
+  "author": {
+    "name": "mohammad javad bathaei",
+    "email": "javadbat@gmail.com"
+  },
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "style/",
+    "eye/",
+    "refresh/",
+    "search/"
+  ],
+  "exports": {
+    "./eye": {
+      "types": "./eye/dist/jb-icon-eye.d.ts",
+      "default": "./eye/index.js"
+    },
+    "./refresh": {
+      "types": "./refresh/dist/jb-icon-refresh.d.ts",
+      "default": "./refresh/index.js"
+    },
+    "./search": {
+      "types": "./search/dist/jb-icon-search.d.ts",
+      "default": "./search/index.js"
+    },
+    "./*": "./*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/javadbat/jb-icon.git"
+  }
+}
