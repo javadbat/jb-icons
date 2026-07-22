@@ -2,7 +2,6 @@
   display: inline-block;
   aspect-ratio: 1;
   line-height: 0;
-  transform: rotate(-146deg);
 }
 
 svg {
@@ -11,6 +10,10 @@ svg {
   height: 100%;
   box-sizing: border-box;
   fill: var(--icon-color);
-  transform-box: fill-box;
+}
+
+.icon {
+  transform-box: view-box;
   transform-origin: center;
+  transform: rotate(-146deg);
 }

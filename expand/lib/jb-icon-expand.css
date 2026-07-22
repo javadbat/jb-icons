@@ -1,0 +1,43 @@
+:host {
+  display: inline-block;
+  aspect-ratio: 1;
+  line-height: 0;
+}
+
+svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  overflow: visible;
+  box-sizing: border-box;
+  fill: none;
+  stroke: var(--icon-color);
+  stroke-width: 72;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow {
+  transition: transform 0.2s ease-out;
+  transform-box: view-box;
+}
+
+.arrow-top-start {
+  transform-origin: 304px 304px;
+}
+
+.arrow-top-end {
+  transform-origin: 720px 304px;
+}
+
+.arrow-bottom-end {
+  transform-origin: 720px 720px;
+}
+
+.arrow-bottom-start {
+  transform-origin: 304px 720px;
+}
+
+:host([expanded]) .arrow {
+  transform: rotate(180deg);
+}

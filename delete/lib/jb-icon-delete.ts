@@ -65,7 +65,7 @@ export class JBIconDeleteWebComponent extends HTMLElementBase {
   playOpenAnimation(): Animation {
     this.#isOpen = true;
     this.#doorAnimation?.cancel();
-    this.#doorAnimation = this.door.animate([{ transform: "translate(0, 0) rotate(0deg)" }, { transform: "translate(-8px, -4px) rotate(-24deg)" }], {
+    this.#doorAnimation = this.door.animate([{ transform: "translate(0, 0) rotate(0deg)" }, { transform: "translate(-9rem, -5rem) rotate(-18deg)" }], {
       id: "open",
       duration: 200,
       easing: "ease",
@@ -78,7 +78,7 @@ export class JBIconDeleteWebComponent extends HTMLElementBase {
   playCloseAnimation(): Animation {
     this.#isOpen = false;
     this.#doorAnimation?.cancel();
-    this.#doorAnimation = this.door.animate([{ transform: "translate(-8px, -4px) rotate(-24deg)" }, { transform: "translate(0, 0) rotate(0deg)" }], {
+    this.#doorAnimation = this.door.animate([{ transform: "translate(-9rem, -5rem) rotate(-18deg)" }, { transform: "translate(0, 0) rotate(0deg)" }], {
       id: "close",
       duration: 200,
       easing: "ease",

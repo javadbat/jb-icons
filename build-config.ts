@@ -2,6 +2,13 @@ import type { ReactComponentBuildConfig, WebComponentBuildConfig } from "../../t
 
 export const webComponentList: WebComponentBuildConfig[] = [
   {
+    name: "jb-icon-expand",
+    path: "./expand/lib/jb-icon-expand.ts",
+    outputPath: "./expand/dist/jb-icon-expand.js",
+    tsConfigPath: "./expand/tsconfig.json",
+    umdName: "JBIconExpand",
+  },
+  {
     name: "jb-icon-search",
     path: "./search/lib/jb-icon-search.ts",
     outputPath: "./search/dist/jb-icon-search.js",

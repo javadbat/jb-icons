@@ -16,6 +16,7 @@
     "style/",
     "delete/",
     "edit/",
+    "expand/",
     "eye/",
     "refresh/",
     "search/"
@@ -28,6 +29,10 @@
     "./edit": {
       "types": "./edit/dist/jb-icon-edit.d.ts",
       "default": "./edit/index.js"
+    },
+    "./expand": {
+      "types": "./expand/dist/jb-icon-expand.d.ts",
+      "default": "./expand/index.js"
     },
     "./eye": {
       "types": "./eye/dist/jb-icon-eye.d.ts",

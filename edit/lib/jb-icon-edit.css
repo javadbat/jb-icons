@@ -15,24 +15,25 @@ svg {
 .pen {
   fill: var(--icon-color);
   transition: transform 0.3s ease;
+  transform-origin: 50%;
+  transform-box: fill-box;
+
 }
 
 .line {
   fill: none;
   stroke: var(--icon-color-complementary);
-  stroke-width: 3px;
+  stroke-width: 60;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 3px 41px;
+  stroke-dasharray: 60 820;
   transition: stroke-dasharray 0.3s ease;
 }
 
 :host([active]) .pen {
-  transform: translate(5px, -6px) rotate(-79deg);
-  transform-box: fill-box;
-  transform-origin: center;
+  transform: translate(80px, -96px) rotate(-79deg);
 }
 
 :host([active]) .line {
-  stroke-dasharray: 41px 3px;
+  stroke-dasharray: 800 60;
 }

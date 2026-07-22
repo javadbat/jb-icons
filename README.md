@@ -87,6 +87,21 @@ icon uses `--jb-icon-color` and falls back directly to `currentColor`.
 
 ## Icons
 
+### Expand icon
+
+Import the expand icon from its submodule:
+
+```js
+import "jb-icons/expand";
+```
+
+Set `isExpanded` to animate between the expand and collapse states:
+
+```js
+const expandIcon = document.querySelector("jb-icon-expand");
+expandIcon.isExpanded = true;
+```
+
 ### Edit icon
 
 Import the edit icon from its submodule:

@@ -14,10 +14,10 @@ svg {
 }
 
 .eye-line {
-  d: path("M 0 60 C 40 100 80 100 120 60");
+  d: path("M 96 512 C 352 800 672 800 928 512");
   fill: none;
   stroke: var(--icon-color);
-  stroke-width: 0.875rem;
+  stroke-width: 112;
   transition: 0.3s;
 }
 
@@ -28,15 +28,15 @@ circle {
 }
 
 :host([open]) .eye-line {
-  d: path("M 10 60 C 30 20 100 20 110 60");
+  d: path("M 128 544 C 320 224 704 224 896 544");
 }
 
 :host([open]) circle {
   opacity: 1;
-  transform: translateX(0.5rem);
+  transform: translateX(64px);
   transition: 0.2s 0.2s;
 }
 
 :host([open]:dir(ltr)) circle {
-  transform: translateX(-0.5rem);
+  transform: translateX(-64px);
 }

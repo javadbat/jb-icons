@@ -62,65 +62,47 @@ export class JBIconSearchWebComponent extends HTMLElementBase {
   }
 
   #playLoadingAnimation(): void {
-    const shrinkLineAnimation = this.spinnerLine.animate(
-      [
-        { d: 'path("M400 400 L 450 450")' },
-        { d: 'path("M410 410 L 415 415")' },
-      ],
-      { id: "ShrinkLine", duration: 400 },
-    );
+    const shrinkLineAnimation = this.spinnerLine.animate([{ d: 'path("M800 800 L 900 900")' }, { d: 'path("M820 820 L 830 830")' }], { id: "ShrinkLine", duration: 400 });
     shrinkLineAnimation.cancel();
 
     const curveLineAnimation = this.spinnerLine.animate(
       [
         {
-          d: 'path("M 407.82484150097946 413.25475607450323 A 220 220 0 0 0 413.25475607450323 407.8248415009794")',
+          d: 'path("M 816 827 A 440 440 0 0 0 827 816")',
         },
-        { d: 'path("M 255 475 A 220 220 0 0 0 475 255")' },
+        { d: 'path("M 510 950 A 440 440 0 0 0 950 510")' },
       ],
       { id: "CurveLine", duration: 400 },
     );
     curveLineAnimation.cancel();
 
-    const spinAnimation = this.spinnerBox.animate(
-      [
-        { transform: "rotate(0deg)" },
-        { transform: "rotate(180deg)" },
-        { transform: "rotate(360deg)" },
-      ],
-      { id: "Spin", duration: 1000, iterations: 1 },
-    );
+    const spinAnimation = this.spinnerBox.animate([{ transform: "rotate(0deg)" }, { transform: "rotate(180deg)" }, { transform: "rotate(360deg)" }], {
+      id: "Spin",
+      duration: 1000,
+      iterations: 1,
+    });
     spinAnimation.cancel();
 
     const reverseCurveLineAnimation = this.spinnerLine.animate(
       [
-        { d: 'path("M 255 475 A 220 220 0 0 0 475 255")' },
+        { d: 'path("M 510 950 A 440 440 0 0 0 950 510")' },
         {
-          d: 'path("M 407.82484150097946 413.25475607450323 A 220 220 0 0 0 413.25475607450323 407.8248415009794")',
+          d: 'path("M 816 827 A 440 440 0 0 0 827 816")',
         },
       ],
       { id: "ReverseCurveLine", duration: 400 },
     );
     reverseCurveLineAnimation.cancel();
 
-    const growLineAnimation = this.spinnerLine.animate(
-      [
-        { d: 'path("M410 410 L 415 415")' },
-        { d: 'path("M400 400 L 450 450")' },
-      ],
-      { id: "GrowLine", duration: 400 },
-    );
+    const growLineAnimation = this.spinnerLine.animate([{ d: 'path("M820 820 L 830 830")' }, { d: 'path("M800 800 L 900 900")' }], { id: "GrowLine", duration: 400 });
     growLineAnimation.cancel();
 
     shrinkLineAnimation.onfinish = () => {
-      this.spinnerLine.setAttribute(
-        "d",
-        "M 407.82484150097946 413.25475607450323 A 220 220 0 0 0 413.25475607450323 407.8248415009794",
-      );
+      this.spinnerLine.setAttribute("d", "M 816 827 A 440 440 0 0 0 827 816");
       curveLineAnimation.play();
     };
     curveLineAnimation.onfinish = () => {
-      this.spinnerLine.setAttribute("d", "M 255 475 A 220 220 0 0 0 475 255");
+      this.spinnerLine.setAttribute("d", "M 510 950 A 440 440 0 0 0 950 510");
       spinAnimation.play();
     };
     spinAnimation.onfinish = () => {
@@ -131,11 +113,11 @@ export class JBIconSearchWebComponent extends HTMLElementBase {
       }
     };
     reverseCurveLineAnimation.onfinish = () => {
-      this.spinnerLine.setAttribute("d", "M410 410 L 415 415");
+      this.spinnerLine.setAttribute("d", "M820 820 L 830 830");
       growLineAnimation.play();
     };
     growLineAnimation.onfinish = () => {
-      this.spinnerLine.setAttribute("d", "M400 400 L 450 450");
+      this.spinnerLine.setAttribute("d", "M800 800 L 900 900");
     };
 
     shrinkLineAnimation.play();

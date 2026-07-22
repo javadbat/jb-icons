@@ -2,12 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { createElement, useRef, useState } from "react";
 import "jb-icons/delete";
 import "jb-icons/edit";
+import "jb-icons/expand";
 import "jb-icons/eye";
 import "jb-icons/refresh";
 import "jb-icons/search";
 import "./styles.css";
 
-const iconNames = ["delete", "edit", "eye", "refresh", "search"] as const;
+const iconNames = ["delete", "edit", "expand", "eye", "refresh", "search"] as const;
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 
@@ -21,14 +22,60 @@ interface IconStoryArgs {
   color: IconColor;
 }
 
+type AnimatedIconElement = HTMLElement & {
+  isOpen: boolean;
+  isActive: boolean;
+  isExpanded: boolean;
+  open: boolean;
+  isLoading: boolean;
+};
+
 function Icon({ icon, size = "md", color }: Partial<IconStoryArgs> & Pick<IconStoryArgs, "icon">) {
   return createElement(`jb-icon-${icon}`, { size, color, "aria-label": `${icon} icon` });
+}
+
+function HoverAnimatedIcon({ icon, size = "md", color }: Partial<IconStoryArgs> & Pick<IconStoryArgs, "icon">) {
+  const iconRef = useRef<AnimatedIconElement>(null);
+
+  const setAnimationState = (isActive: boolean) => {
+    const element = iconRef.current;
+    if (!element) return;
+
+    switch (icon) {
+      case "delete":
+        element.isOpen = isActive;
+        break;
+      case "edit":
+        element.isActive = isActive;
+        break;
+      case "expand":
+        element.isExpanded = isActive;
+        break;
+      case "eye":
+        element.open = isActive;
+        break;
+      case "refresh":
+      case "search":
+        element.isLoading = isActive;
+        break;
+    }
+  };
+
+  return createElement(`jb-icon-${icon}`, {
+    ref: iconRef,
+    size,
+    color,
+    "aria-label": `${icon} icon`,
+    onMouseEnter: () => setAnimationState(true),
+    onMouseLeave: () => setAnimationState(false),
+  });
 }
 
 function AnimationExamples() {
   const examples = useRef<HTMLDivElement>(null);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [editActive, setEditActive] = useState(false);
+  const [expandActive, setExpandActive] = useState(false);
   const [eyeOpen, setEyeOpen] = useState(false);
   const [refreshLoading, setRefreshLoading] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
@@ -52,6 +99,13 @@ function AnimationExamples() {
     setEditActive(nextValue);
     const icon = examples.current?.querySelector<HTMLElement & { isActive: boolean }>("jb-icon-edit");
     if (icon) icon.isActive = nextValue;
+  };
+
+  const toggleExpand = () => {
+    const nextValue = !expandActive;
+    setExpandActive(nextValue);
+    const icon = examples.current?.querySelector<HTMLElement & { isExpanded: boolean }>("jb-icon-expand");
+    if (icon) icon.isExpanded = nextValue;
   };
 
   const toggleRefresh = () => {
@@ -83,6 +137,14 @@ function AnimationExamples() {
         <strong>Edit</strong>
         <button type="button" onClick={toggleEdit}>
           {editActive ? "Deactivate" : "Activate"}
+        </button>
+      </section>
+
+      <section className="icon-action-card">
+        <Icon icon="expand" size="xl" color="primary" />
+        <strong>Expand</strong>
+        <button type="button" onClick={toggleExpand}>
+          {expandActive ? "Collapse" : "Expand"}
         </button>
       </section>
 
@@ -146,7 +208,7 @@ export const Gallery: Story = {
     <div className="icon-gallery">
       {iconNames.map(icon => (
         <div className="icon-gallery-item" key={icon}>
-          <Icon icon={icon} size="xl" />
+          <HoverAnimatedIcon icon={icon} size="xl" />
           <code>{`jb-icon-${icon}`}</code>
         </div>
       ))}
@@ -172,7 +234,7 @@ export const Colors: Story = {
     <div className="icon-color-grid">
       {iconColors.map(color => (
         <div className={`icon-variant ${color === "light" ? "icon-variant--dark" : ""}`} key={color}>
-          <Icon icon={args.icon} size="xl" color={color} />
+          <HoverAnimatedIcon icon={args.icon} size="xl" color={color} />
           <code>{color}</code>
         </div>
       ))}

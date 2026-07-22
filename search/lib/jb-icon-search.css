@@ -16,7 +16,7 @@ svg {
 circle {
   stroke: var(--icon-color);
   fill: var(--jb-icon-search-fill, transparent);
-  stroke-width: 1.5625rem;
+  stroke-width: 50;
 }
 
 .spin-line-group {
@@ -34,6 +34,6 @@ circle {
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: 0.2s;
-  stroke-width: 2.1875rem;
+  stroke-width: 70;
   transform-origin: center;
 }
