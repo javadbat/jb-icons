@@ -87,12 +87,72 @@ icon uses `--jb-icon-color` and falls back directly to `currentColor`.
 
 ## Icons
 
+### Edit icon
+
+Import the edit icon from its submodule:
+
+```js
+import "jb-icons/edit";
+```
+
+The pen uses the standard icon color, while its animated underline uses the
+complementary icon color:
+
+```html
+<jb-icon-edit></jb-icon-edit>
+<jb-icon-edit size="sm" color="primary"></jb-icon-edit>
+```
+
+Customize the underline with `--jb-icon-color-complementary`:
+
+```css
+jb-icon-edit {
+  --jb-icon-color-complementary: #ff1229;
+}
+```
+
+Set `isActive` to animate between the resting and active edit states:
+
+```js
+const editIcon = document.querySelector("jb-icon-edit");
+editIcon.isActive = true;
+```
+
+### Delete icon
+
+Import the delete icon from its submodule:
+
+```js
+import "jb-icons/delete";
+```
+
+Use the shared `size` and `color` variants on `<jb-icon-delete>`:
+
+```html
+<jb-icon-delete></jb-icon-delete>
+<jb-icon-delete size="sm" color="danger"></jb-icon-delete>
+```
+
+Set `isOpen` to animate the bin lid between its open and closed states. The
+animation is triggered programmatically and is not tied to hover:
+
+```js
+const deleteIcon = document.querySelector("jb-icon-delete");
+deleteIcon.isOpen = true;
+
+// Close it again:
+deleteIcon.isOpen = false;
+```
+
+The `playOpenAnimation()` and `playCloseAnimation()` methods remain available
+and keep `isOpen` synchronized.
+
 ### Refresh icon
 
 Import the refresh icon from its submodule:
 
 ```js
-import "jb-icon/refresh";
+import "jb-icons/refresh";
 ```
 
 ```html
@@ -117,7 +177,7 @@ refreshIcon.isLoading = false;
 Import the search icon from its submodule:
 
 ```js
-import "jb-icon/search";
+import "jb-icons/search";
 ```
 
 Use the shared `size` and `color` variants on `<jb-icon-search>`:
@@ -145,7 +205,7 @@ Import the eye icon from its submodule and use the `open` attribute or property
 to switch between hidden and visible states:
 
 ```js
-import "jb-icon/eye";
+import "jb-icons/eye";
 ```
 
 ```html

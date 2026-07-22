@@ -22,6 +22,20 @@ export const webComponentList: WebComponentBuildConfig[] = [
     tsConfigPath: "./refresh/tsconfig.json",
     umdName: "JBIconRefresh",
   },
+  {
+    name: "jb-icon-delete",
+    path: "./delete/lib/jb-icon-delete.ts",
+    outputPath: "./delete/dist/jb-icon-delete.js",
+    tsConfigPath: "./delete/tsconfig.json",
+    umdName: "JBIconDelete",
+  },
+  {
+    name: "jb-icon-edit",
+    path: "./edit/lib/jb-icon-edit.ts",
+    outputPath: "./edit/dist/jb-icon-edit.js",
+    tsConfigPath: "./edit/tsconfig.json",
+    umdName: "JBIconEdit",
+  },
 ];
 
 export const reactComponentList: ReactComponentBuildConfig[] = [];

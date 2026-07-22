@@ -8,14 +8,27 @@
   },
   "version": "0.1.0",
   "license": "MIT",
+  "dependencies": {
+    "jb-core": ">=0.30.0"
+  },
   "files": [
     "README.md",
     "style/",
+    "delete/",
+    "edit/",
     "eye/",
     "refresh/",
     "search/"
   ],
   "exports": {
+    "./delete": {
+      "types": "./delete/dist/jb-icon-delete.d.ts",
+      "default": "./delete/index.js"
+    },
+    "./edit": {
+      "types": "./edit/dist/jb-icon-edit.d.ts",
+      "default": "./edit/index.js"
+    },
     "./eye": {
       "types": "./eye/dist/jb-icon-eye.d.ts",
       "default": "./eye/index.js"
@@ -32,6 +45,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/javadbat/jb-icon.git"
+    "url": "https://github.com/javadbat/jb-icons.git"
   }
 }

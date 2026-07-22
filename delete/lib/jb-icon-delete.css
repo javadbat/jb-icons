@@ -1,0 +1,19 @@
+:host {
+  display: inline-block;
+  aspect-ratio: 42.76 / 50.36;
+  line-height: 0;
+}
+
+svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  overflow: visible;
+  box-sizing: border-box;
+  fill: var(--icon-color);
+}
+
+.door {
+  transform-box: fill-box;
+  transform-origin: center;
+}

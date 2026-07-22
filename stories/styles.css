@@ -1,0 +1,68 @@
+.icon-preview {
+  display: grid;
+  min-width: 8rem;
+  min-height: 8rem;
+  place-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+}
+
+.icon-preview--dark,
+.icon-variant--dark {
+  color: white;
+  background: #1e293b;
+}
+
+.icon-gallery,
+.icon-color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1rem;
+  width: min(48rem, 90vw);
+}
+
+.icon-gallery-item,
+.icon-variant,
+.icon-action-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 7rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+}
+
+.icon-row,
+.icon-actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.icon-action-card {
+  min-width: 8rem;
+}
+
+.icon-action-card span {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.icon-action-card button {
+  padding: 0.375rem 0.75rem;
+  color: #0f172a;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.icon-action-buttons {
+  display: flex;
+  gap: 0.375rem;
+}
