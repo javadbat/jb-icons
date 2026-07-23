@@ -2,6 +2,9 @@
   --icon-size: var(--jb-icon-size, 1.5rem);
   --icon-color: var(--jb-icon-color, currentColor);
   --icon-color-complementary: var(--jb-icon-color-complementary, var(--jb-primary));
+  --icon-stroke-width-thin: 48;
+  --icon-stroke-width: 64;
+  --icon-stroke-width-thick: 96;
   height: var(--icon-size);
 }
 

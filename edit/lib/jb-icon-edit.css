@@ -13,17 +13,20 @@ svg {
 }
 
 .pen {
-  fill: var(--icon-color);
+  fill: none;
+  stroke: var(--icon-color);
+  stroke-width: var(--icon-stroke-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
   transition: transform 0.3s ease;
   transform-origin: 50%;
   transform-box: fill-box;
-
 }
 
 .line {
   fill: none;
   stroke: var(--icon-color-complementary);
-  stroke-width: 60;
+  stroke-width: var(--icon-stroke-width-thin);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 60 820;

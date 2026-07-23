@@ -45,6 +45,19 @@ Override one or more size tokens from an application stylesheet:
 `--icon-size` is internal to each icon and contains the resolved height. Prefer
 the public `--jb-icon-size*` properties when customizing icons.
 
+## Stroke width
+
+Stroked icons use the shared 1024-unit weight scale from `style/variables.css`:
+
+| Weight | SVG units | Internal custom property |
+| --- | ---: | --- |
+| Thin detail | 48 | `--icon-stroke-width-thin` |
+| Standard outline | 64 | `--icon-stroke-width` |
+| Thick emphasis | 96 | `--icon-stroke-width-thick` |
+
+Use the standard weight for primary outlines. Thin and thick weights are
+reserved for secondary details and intentional visual emphasis.
+
 ## Color
 
 Icons inherit the surrounding text color by default through `currentColor`:

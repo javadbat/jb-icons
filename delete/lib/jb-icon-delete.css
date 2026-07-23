@@ -10,7 +10,11 @@ svg {
   height: 100%;
   overflow: visible;
   box-sizing: border-box;
-  fill: var(--icon-color);
+  fill: none;
+  stroke: var(--icon-color);
+  stroke-width: var(--icon-stroke-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .door {

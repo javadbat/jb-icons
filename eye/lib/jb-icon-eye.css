@@ -17,7 +17,7 @@ svg {
   d: path("M 96 512 C 352 800 672 800 928 512");
   fill: none;
   stroke: var(--icon-color);
-  stroke-width: 112;
+  stroke-width: var(--icon-stroke-width-thick);
   transition: 0.3s;
 }
 

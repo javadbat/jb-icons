@@ -12,7 +12,7 @@ svg {
   box-sizing: border-box;
   fill: none;
   stroke: var(--icon-color);
-  stroke-width: 72;
+  stroke-width: var(--icon-stroke-width);
   stroke-linecap: round;
   stroke-linejoin: round;
 }

@@ -1,3 +1,4 @@
+import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-refresh.css";
 import { renderHTML } from "./render.js";
@@ -22,6 +23,7 @@ export class JBIconRefreshWebComponent extends HTMLElementBase {
 
   constructor() {
     super();
+    registerDefaultVariables();
     const shadowRoot = this.attachShadow({
       mode: "open",
       clonable: true,
@@ -31,7 +33,7 @@ export class JBIconRefreshWebComponent extends HTMLElementBase {
     template.innerHTML = `<style>${VariablesCSS}\n${CSS}</style>\n${renderHTML()}`;
     shadowRoot.appendChild(template.content.cloneNode(true));
     this.icon = shadowRoot.querySelector(".icon")!;
-    this.animation = this.icon.animate([{ transform: "rotate(-146deg)" }, { transform: "rotate(-506deg)" }], { id: "spin", duration: 400, iterations: 1 });
+    this.animation = this.icon.animate([{ transform: "rotate(0deg)" }, { transform: "rotate(360deg)" }], { id: "spin", duration: 400, iterations: 1 });
     this.animation.cancel();
     this.animation.onfinish = () => {
       if (this.isLoading) {

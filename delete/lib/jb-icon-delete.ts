@@ -1,3 +1,4 @@
+import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-delete.css";
 import { renderHTML } from "./render.js";
@@ -10,7 +11,7 @@ export type JBIconSize = (typeof iconSizes)[number];
 export type JBIconColor = (typeof iconColors)[number];
 
 export class JBIconDeleteWebComponent extends HTMLElementBase {
-  readonly door: SVGPathElement;
+  readonly door: SVGGElement;
   #isOpen = false;
   #doorAnimation: Animation | null = null;
 
@@ -51,6 +52,7 @@ export class JBIconDeleteWebComponent extends HTMLElementBase {
 
   constructor() {
     super();
+    registerDefaultVariables();
     const shadowRoot = this.attachShadow({
       mode: "open",
       clonable: true,
