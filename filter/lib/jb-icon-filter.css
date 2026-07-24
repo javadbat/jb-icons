@@ -1,0 +1,13 @@
+:host {
+  display: inline-block;
+  aspect-ratio: 1;
+  line-height: 0;
+}
+
+svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  box-sizing: border-box;
+  fill: var(--icon-color);
+}

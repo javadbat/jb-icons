@@ -1,14 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { createElement, useRef, useState } from "react";
+import "jb-icons/arrow";
+import "jb-icons/close";
 import "jb-icons/delete";
 import "jb-icons/edit";
 import "jb-icons/expand";
 import "jb-icons/eye";
+import "jb-icons/filter";
 import "jb-icons/refresh";
 import "jb-icons/search";
+import "jb-icons/arrow-tailed";
+import "jb-icons/triangle";
 import "./styles.css";
 
-const iconNames = ["delete", "edit", "expand", "eye", "refresh", "search"] as const;
+const iconNames = ["arrow", "arrow-tailed", "close", "delete", "edit", "expand", "eye", "filter", "refresh", "search", "triangle"] as const;
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 
@@ -28,6 +33,7 @@ type AnimatedIconElement = HTMLElement & {
   isExpanded: boolean;
   open: boolean;
   isLoading: boolean;
+  spin: number;
 };
 
 function Icon({ icon, size = "md", color }: Partial<IconStoryArgs> & Pick<IconStoryArgs, "icon">) {
@@ -122,6 +128,11 @@ function AnimationExamples() {
     if (icon) icon.isLoading = nextValue;
   };
 
+  const spinIcon = (selector: "jb-icon-arrow" | "jb-icon-arrow-tailed" | "jb-icon-triangle") => {
+    const icon = examples.current?.querySelector<AnimatedIconElement>(selector);
+    if (icon) icon.spin = 180;
+  };
+
   return (
     <div className="icon-actions" ref={examples}>
       <section className="icon-action-card">
@@ -171,6 +182,30 @@ function AnimationExamples() {
           {searchLoading ? "Stop" : "Start"}
         </button>
       </section>
+
+      <section className="icon-action-card">
+        <Icon icon="arrow" size="xl" color="primary" />
+        <strong>Arrow</strong>
+        <button type="button" onClick={() => spinIcon("jb-icon-arrow")}>
+          Spin 180°
+        </button>
+      </section>
+
+      <section className="icon-action-card">
+        <Icon icon="arrow-tailed" size="xl" color="primary" />
+        <strong>Arrow Tailed</strong>
+        <button type="button" onClick={() => spinIcon("jb-icon-arrow-tailed")}>
+          Spin 180°
+        </button>
+      </section>
+
+      <section className="icon-action-card">
+        <Icon icon="triangle" size="xl" color="primary" />
+        <strong>Triangle</strong>
+        <button type="button" onClick={() => spinIcon("jb-icon-triangle")}>
+          Spin 180°
+        </button>
+      </section>
     </div>
   );
 }
@@ -206,12 +241,83 @@ export const Playground: Story = {
 export const Gallery: Story = {
   render: () => (
     <div className="icon-gallery">
-      {iconNames.map(icon => (
-        <div className="icon-gallery-item" key={icon}>
-          <HoverAnimatedIcon icon={icon} size="xl" />
-          <code>{`jb-icon-${icon}`}</code>
+      <div className="icon-gallery-item">
+        <div className="arrow-directions">
+          {createElement("jb-icon-arrow", { direction: "up", size: "xl", "aria-label": "up arrow" })}
+          {createElement("jb-icon-arrow", { direction: "right", size: "xl", "aria-label": "right arrow" })}
+          {createElement("jb-icon-arrow", { direction: "down", size: "xl", "aria-label": "down arrow" })}
+          {createElement("jb-icon-arrow", { direction: "left", size: "xl", "aria-label": "left arrow" })}
+          {createElement("jb-icon-arrow", { direction: "inline-start", size: "xl", "aria-label": "inline-start arrow" })}
+          {createElement("jb-icon-arrow", { direction: "inline-end", size: "xl", "aria-label": "inline-end arrow" })}
         </div>
-      ))}
+        <code>jb-icon-arrow</code>
+      </div>
+      <div className="icon-gallery-item">
+        <div className="arrow-directions">
+          {createElement("jb-icon-arrow", { direction: "up", size: "xl", "end-line": "", "aria-label": "up arrow with end line" })}
+          {createElement("jb-icon-arrow", { direction: "right", size: "xl", "end-line": "", "aria-label": "right arrow with end line" })}
+          {createElement("jb-icon-arrow", { direction: "down", size: "xl", "end-line": "", "aria-label": "down arrow with end line" })}
+          {createElement("jb-icon-arrow", { direction: "left", size: "xl", "end-line": "", "aria-label": "left arrow with end line" })}
+          {createElement("jb-icon-arrow", { direction: "inline-start", size: "xl", "end-line": "", "aria-label": "inline-start arrow with end line" })}
+          {createElement("jb-icon-arrow", { direction: "inline-end", size: "xl", "end-line": "", "aria-label": "inline-end arrow with end line" })}
+        </div>
+        <code>jb-icon-arrow</code>
+        <code>end-line</code>
+      </div>
+      <div className="icon-gallery-item">
+        <div className="arrow-directions">
+          {createElement("jb-icon-arrow-tailed", { direction: "up", size: "xl", "aria-label": "up tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "right", size: "xl", "aria-label": "right tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "down", size: "xl", "aria-label": "down tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "left", size: "xl", "aria-label": "left tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "inline-start", size: "xl", "aria-label": "inline-start tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "inline-end", size: "xl", "aria-label": "inline-end tailed arrow" })}
+        </div>
+        <code>jb-icon-arrow-tailed</code>
+      </div>
+      <div className="icon-gallery-item">
+        <div className="arrow-directions">
+          {createElement("jb-icon-triangle", { direction: "up", size: "xl", "aria-label": "up triangle" })}
+          {createElement("jb-icon-triangle", { direction: "right", size: "xl", "aria-label": "right triangle" })}
+          {createElement("jb-icon-triangle", { direction: "down", size: "xl", "aria-label": "down triangle" })}
+          {createElement("jb-icon-triangle", { direction: "left", size: "xl", "aria-label": "left triangle" })}
+          {createElement("jb-icon-triangle", { direction: "inline-start", size: "xl", "aria-label": "inline-start triangle" })}
+          {createElement("jb-icon-triangle", { direction: "inline-end", size: "xl", "aria-label": "inline-end triangle" })}
+        </div>
+        <code>jb-icon-triangle</code>
+      </div>
+      <div className="icon-gallery-item">
+        <HoverAnimatedIcon icon="close" size="xl" />
+        <code>jb-icon-close</code>
+      </div>
+      <div className="icon-gallery-item">
+        <HoverAnimatedIcon icon="delete" size="xl" />
+        <code>jb-icon-delete</code>
+      </div>
+      <div className="icon-gallery-item">
+        <HoverAnimatedIcon icon="edit" size="xl" />
+        <code>jb-icon-edit</code>
+      </div>
+      <div className="icon-gallery-item">
+        <HoverAnimatedIcon icon="expand" size="xl" />
+        <code>jb-icon-expand</code>
+      </div>
+      <div className="icon-gallery-item">
+        <HoverAnimatedIcon icon="eye" size="xl" />
+        <code>jb-icon-eye</code>
+      </div>
+      <div className="icon-gallery-item">
+        <HoverAnimatedIcon icon="filter" size="xl" />
+        <code>jb-icon-filter</code>
+      </div>
+      <div className="icon-gallery-item">
+        <HoverAnimatedIcon icon="refresh" size="xl" />
+        <code>jb-icon-refresh</code>
+      </div>
+      <div className="icon-gallery-item">
+        <HoverAnimatedIcon icon="search" size="xl" />
+        <code>jb-icon-search</code>
+      </div>
     </div>
   ),
 };

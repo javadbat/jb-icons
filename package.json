@@ -1,12 +1,12 @@
 {
-  "name": "jb-icon",
+  "name": "jb-icons",
   "description": "Icon components for the JB Design System",
   "type": "module",
   "author": {
     "name": "mohammad javad bathaei",
     "email": "javadbat@gmail.com"
   },
-  "version": "0.1.0",
+  "version": "2.0.0",
   "license": "MIT",
   "dependencies": {
     "jb-core": ">=0.30.0"
@@ -14,14 +14,27 @@
   "files": [
     "README.md",
     "style/",
+    "arrow/",
+    "close/",
     "delete/",
     "edit/",
     "expand/",
+    "filter/",
     "eye/",
     "refresh/",
-    "search/"
+    "search/",
+    "arrow-tailed/",
+    "triangle/"
   ],
   "exports": {
+    "./arrow": {
+      "types": "./arrow/dist/jb-icon-arrow.d.ts",
+      "default": "./arrow/index.js"
+    },
+    "./close": {
+      "types": "./close/dist/jb-icon-close.d.ts",
+      "default": "./close/index.js"
+    },
     "./delete": {
       "types": "./delete/dist/jb-icon-delete.d.ts",
       "default": "./delete/index.js"
@@ -34,6 +47,10 @@
       "types": "./expand/dist/jb-icon-expand.d.ts",
       "default": "./expand/index.js"
     },
+    "./filter": {
+      "types": "./filter/dist/jb-icon-filter.d.ts",
+      "default": "./filter/index.js"
+    },
     "./eye": {
       "types": "./eye/dist/jb-icon-eye.d.ts",
       "default": "./eye/index.js"
@@ -45,6 +62,14 @@
     "./search": {
       "types": "./search/dist/jb-icon-search.d.ts",
       "default": "./search/index.js"
+    },
+    "./arrow-tailed": {
+      "types": "./arrow-tailed/dist/jb-icon-arrow-tailed.d.ts",
+      "default": "./arrow-tailed/index.js"
+    },
+    "./triangle": {
+      "types": "./triangle/dist/jb-icon-triangle.d.ts",
+      "default": "./triangle/index.js"
     },
     "./*": "./*"
   },

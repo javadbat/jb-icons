@@ -1,0 +1,42 @@
+:host {
+  display: inline-block;
+  aspect-ratio: 1;
+  line-height: 0;
+  --resolved-bidi-rotation: var(--jb-icon-bidi-rotation, var(--calculated-bidi-rotation, 0deg));
+}
+
+svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  box-sizing: border-box;
+  fill: var(--icon-color);
+  stroke: var(--icon-color);
+  stroke-width: 6;
+  stroke-linejoin: round;
+}
+
+.spin-icon {
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+:host([direction="up"]) svg {
+  transform: rotate(90deg);
+}
+
+:host([direction="right"]) svg {
+  transform: rotate(180deg);
+}
+
+:host([direction="down"]) svg {
+  transform: rotate(-90deg);
+}
+
+:host([direction="inline-end"]) svg {
+  transform: rotate(calc(var(--resolved-bidi-rotation) - 180deg));
+}
+
+:host([direction="inline-start"]) svg {
+  transform: rotate(var(--resolved-bidi-rotation));
+}

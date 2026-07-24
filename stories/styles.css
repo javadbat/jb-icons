@@ -44,6 +44,12 @@
   gap: 1rem;
 }
 
+.arrow-directions {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 0.25rem;
+}
+
 .icon-action-card {
   min-width: 8rem;
 }

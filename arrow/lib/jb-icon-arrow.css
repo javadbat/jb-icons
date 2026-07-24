@@ -1,0 +1,55 @@
+:host {
+  display: inline-block;
+  aspect-ratio: 1;
+  line-height: 0;
+  --resolved-bidi-rotation: var(--jb-icon-bidi-rotation, var(--calculated-bidi-rotation, 0deg));
+}
+
+svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  box-sizing: border-box;
+  fill: none;
+  stroke: var(--icon-color);
+  stroke-width: var(--icon-stroke-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.spin-icon {
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+.end-line {
+  display: none;
+}
+
+:host([end-line]) .arrow {
+  transform: translateX(-64px);
+}
+
+:host([end-line]) .end-line {
+  display: inline;
+}
+
+:host([direction="down"]) svg {
+  transform: rotate(90deg);
+}
+
+:host([direction="left"]) svg {
+  transform: rotate(180deg);
+}
+
+:host([direction="up"]) svg {
+  transform: rotate(-90deg);
+}
+
+:host([direction="inline-end"]) svg {
+  transform: rotate(var(--resolved-bidi-rotation));
+}
+
+:host([direction="inline-start"]) svg {
+  transform: rotate(calc(var(--resolved-bidi-rotation) + 180deg));
+}
