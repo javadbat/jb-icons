@@ -1,6 +1,16 @@
 # jb-icon
+
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jb-icons)
+[![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://raw.githubusercontent.com/javadbat/jb-icons/main/LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/jb-icons)](https://www.npmjs.com/package/jb-icons)
+![GitHub Created At](https://img.shields.io/github/created-at/javadbat/jb-icons)
+
 Icon component for the JB Design System.
 jb-icon has no default export. it has some sub folder each contain one icon. to make it ssr friendly we create all jb-icons in declarative web-component.
+
+## Demo
+
+- [Storybook](https://javadbat.github.io/design-system/?path=/story/components-jbicons--gallery)
 
 ## Size and variants
 
@@ -245,3 +255,12 @@ import "jb-icons/eye";
 const eye = document.querySelector("jb-icon-eye");
 eye.open = true;
 ```
+## Related Docs
+
+- See [All JB Design System Component List](https://javadbat.github.io/design-system/) for more components.
+- Use [Contribution Guide](https://github.com/javadbat/design-system/blob/main/docs/contribution-guide.md) if you want to contribute to this component.
+
+
+## AI agent notes
+
+- Import `jb-icons/icon-name` once before using `<jb-icon-name>`.
