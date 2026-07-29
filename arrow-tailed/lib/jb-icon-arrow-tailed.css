@@ -18,6 +18,18 @@ svg {
   transform-origin: center;
 }
 
+.long-arrow {
+  display: none;
+}
+
+:host([long]) .short-arrow {
+  display: none;
+}
+
+:host([long]) .long-arrow {
+  display: block;
+}
+
 :host([direction="right"]) svg {
   transform: rotate(90deg);
 }

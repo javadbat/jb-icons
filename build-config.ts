@@ -78,6 +78,13 @@ export const webComponentList: WebComponentBuildConfig[] = [
     tsConfigPath: "./edit/tsconfig.json",
     umdName: "JBIconEdit",
   },
+  {
+    name: "jb-icon-lorgnette",
+    path: "./lorgnette/lib/jb-icon-lorgnette.ts",
+    outputPath: "./lorgnette/dist/jb-icon-lorgnette.js",
+    tsConfigPath: "./lorgnette/tsconfig.json",
+    umdName: "JBIconLorgnette",
+  },
 ];
 
 export const reactComponentList: ReactComponentBuildConfig[] = [];

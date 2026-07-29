@@ -7,13 +7,14 @@ import "jb-icons/edit";
 import "jb-icons/expand";
 import "jb-icons/eye";
 import "jb-icons/filter";
+import "jb-icons/lorgnette";
 import "jb-icons/refresh";
 import "jb-icons/search";
 import "jb-icons/arrow-tailed";
 import "jb-icons/triangle";
 import "./styles.css";
 
-const iconNames = ["arrow", "arrow-tailed", "close", "delete", "edit", "expand", "eye", "filter", "refresh", "search", "triangle"] as const;
+const iconNames = ["arrow", "arrow-tailed", "close", "delete", "edit", "expand", "eye", "filter", "lorgnette", "refresh", "search", "triangle"] as const;
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 
@@ -25,6 +26,7 @@ interface IconStoryArgs {
   icon: IconName;
   size: IconSize;
   color: IconColor;
+  long: boolean;
 }
 
 type AnimatedIconElement = HTMLElement & {
@@ -36,8 +38,8 @@ type AnimatedIconElement = HTMLElement & {
   spin: number;
 };
 
-function Icon({ icon, size = "md", color }: Partial<IconStoryArgs> & Pick<IconStoryArgs, "icon">) {
-  return createElement(`jb-icon-${icon}`, { size, color, "aria-label": `${icon} icon` });
+function Icon({ icon, size = "md", color, long }: Partial<IconStoryArgs> & Pick<IconStoryArgs, "icon">) {
+  return createElement(`jb-icon-${icon}`, { size, color, long, "aria-label": `${icon} icon` });
 }
 
 function HoverAnimatedIcon({ icon, size = "md", color }: Partial<IconStoryArgs> & Pick<IconStoryArgs, "icon">) {
@@ -216,11 +218,13 @@ const meta: Meta<IconStoryArgs> = {
     icon: "edit",
     size: "xl",
     color: "primary",
+    long: false,
   },
   argTypes: {
     icon: { control: "select", options: iconNames },
     size: { control: "select", options: iconSizes },
     color: { control: "select", options: iconColors },
+    long: { control: "boolean", if: { arg: "icon", eq: "arrow-tailed" } },
   },
   parameters: {
     layout: "centered",
@@ -277,6 +281,18 @@ export const Gallery: Story = {
       </div>
       <div className="icon-gallery-item">
         <div className="arrow-directions">
+          {createElement("jb-icon-arrow-tailed", { direction: "up", size: "xl", long: true, "aria-label": "long up tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "right", size: "xl", long: true, "aria-label": "long right tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "down", size: "xl", long: true, "aria-label": "long down tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "left", size: "xl", long: true, "aria-label": "long left tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "inline-start", size: "xl", long: true, "aria-label": "long inline-start tailed arrow" })}
+          {createElement("jb-icon-arrow-tailed", { direction: "inline-end", size: "xl", long: true, "aria-label": "long inline-end tailed arrow" })}
+        </div>
+        <code>jb-icon-arrow-tailed</code>
+        <code>long</code>
+      </div>
+      <div className="icon-gallery-item">
+        <div className="arrow-directions">
           {createElement("jb-icon-triangle", { direction: "up", size: "xl", "aria-label": "up triangle" })}
           {createElement("jb-icon-triangle", { direction: "right", size: "xl", "aria-label": "right triangle" })}
           {createElement("jb-icon-triangle", { direction: "down", size: "xl", "aria-label": "down triangle" })}
@@ -309,6 +325,10 @@ export const Gallery: Story = {
       <div className="icon-gallery-item">
         <HoverAnimatedIcon icon="filter" size="xl" />
         <code>jb-icon-filter</code>
+      </div>
+      <div className="icon-gallery-item">
+        <Icon icon="lorgnette" size="xl" />
+        <code>jb-icon-lorgnette</code>
       </div>
       <div className="icon-gallery-item">
         <HoverAnimatedIcon icon="refresh" size="xl" />

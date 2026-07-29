@@ -10,6 +10,14 @@ export class JBIconArrowTailedWebComponent extends HTMLElementBase {
   #rotation = 0;
   #spinAnimation: Animation | null = null;
 
+  get long(): boolean {
+    return this.hasAttribute("long");
+  }
+
+  set long(value: boolean) {
+    this.toggleAttribute("long", value);
+  }
+
   get spin() {
     return this.#spin;
   }

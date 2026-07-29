@@ -110,6 +110,49 @@ icon uses `--jb-icon-color` and falls back directly to `currentColor`.
 
 ## Icons
 
+### Arrow-tailed icon
+
+Import the tailed arrow from its submodule:
+
+```js
+import "jb-icons/arrow-tailed";
+```
+
+The default arrow has a short tail and square visual bounds. Add the boolean
+`long` attribute, or set its property, to use the full-height tail:
+
+```html
+<jb-icon-arrow-tailed></jb-icon-arrow-tailed>
+<jb-icon-arrow-tailed long></jb-icon-arrow-tailed>
+```
+
+```js
+const arrow = document.querySelector("jb-icon-arrow-tailed");
+arrow.long = true;
+```
+
+### Lorgnette icon
+
+Import the lorgnette icon from its submodule:
+
+```js
+import "jb-icons/lorgnette";
+```
+
+Use the shared size and color variants. Its lens highlights use the
+complementary icon color:
+
+```html
+<jb-icon-lorgnette></jb-icon-lorgnette>
+<jb-icon-lorgnette size="sm" color="primary"></jb-icon-lorgnette>
+```
+
+```css
+jb-icon-lorgnette {
+  --jb-icon-color-complementary: #ff1229;
+}
+```
+
 ### Expand icon
 
 Import the expand icon from its submodule:

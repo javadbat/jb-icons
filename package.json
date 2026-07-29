@@ -21,6 +21,7 @@
     "expand/",
     "filter/",
     "eye/",
+    "lorgnette/",
     "refresh/",
     "search/",
     "arrow-tailed/",
@@ -54,6 +55,10 @@
     "./eye": {
       "types": "./eye/dist/jb-icon-eye.d.ts",
       "default": "./eye/index.js"
+    },
+    "./lorgnette": {
+      "types": "./lorgnette/dist/jb-icon-lorgnette.d.ts",
+      "default": "./lorgnette/index.js"
     },
     "./refresh": {
       "types": "./refresh/dist/jb-icon-refresh.d.ts",
