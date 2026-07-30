@@ -1,0 +1,28 @@
+import { Controls, Meta, Stories, Story, Title } from "@storybook/addon-docs/blocks";
+import * as IconStories from "./JBIcons.stories";
+
+<Meta of={IconStories} />
+
+<Title>JB Icons</Title>
+
+Framework-neutral icon web components with shared size and color variants,
+logical directions, and optional animation properties.
+
+<Story of={IconStories.Playground} />
+<Controls of={IconStories.Playground} />
+
+## Absolute spin
+
+Arrow, arrow-tailed, and triangle icons accept a numeric `spin` property. The
+angle is always measured from the selected original direction, so `spin={0}`
+restores that direction.
+
+<Story of={IconStories.Spin} />
+
+## Gallery
+
+<Story of={IconStories.Gallery} />
+
+## Other examples
+
+<Stories />

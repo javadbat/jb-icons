@@ -12,6 +12,42 @@ jb-icon has no default export. it has some sub folder each contain one icon. to 
 
 - [Storybook](https://javadbat.github.io/design-system/?path=/story/components-jbicons--gallery)
 
+## React JSX types
+
+React applications can opt in to JSX declarations for every icon with one
+type-only helper import. Continue importing each icon separately so only the
+icons used by the application are registered and bundled:
+
+```tsx
+import "jb-icons/react";
+import "jb-icons/triangle";
+
+export function DisclosureIcon({ isOpen }: { isOpen: boolean }) {
+  return <jb-icon-triangle direction="inline-end" spin={isOpen ? 90 : 0} size="xs" />;
+}
+```
+
+The `jb-icons/react` runtime entry is empty. Non-React projects do not need to
+import it and do not resolve any React types.
+
+The declaration includes the shared `size`, `color`, `class`, standard HTML,
+ARIA, children, and ref props. It also exposes each icon's public properties:
+
+| Icons | Additional React JSX props |
+| --- | --- |
+| `arrow` | `direction`, `spin`, `end-line` |
+| `arrow-tailed` | `direction`, `spin`, `long` |
+| `triangle` | `direction`, `spin` |
+| `delete` | `isOpen` |
+| `edit` | `isActive`, `active` |
+| `expand` | `isExpanded`, `expanded` |
+| `eye` | `open` |
+| `refresh`, `search` | `isLoading` |
+
+Remove any application-local declarations for the same `jb-icon-*` JSX
+elements after opting in, because duplicate declarations with different types
+can conflict.
+
 ## Size and variants
 
 Every icon supports a `size` attribute and property. Sizes set only the icon height;

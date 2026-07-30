@@ -7,7 +7,6 @@ const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElemen
 export class JBIconTriangleWebComponent extends HTMLElementBase {
   readonly icon: SVGGElement;
   #spin = 0;
-  #rotation = 0;
   #spinAnimation: Animation | null = null;
 
   get spin() {
@@ -44,8 +43,7 @@ export class JBIconTriangleWebComponent extends HTMLElementBase {
   playSpin(): Animation {
     const currentTransform = getComputedStyle(this.icon).transform;
     this.#spinAnimation?.cancel();
-    this.#rotation += this.spin;
-    this.#spinAnimation = this.icon.animate([{ transform: currentTransform }, { transform: `rotate(${this.#rotation}deg)` }], {
+    this.#spinAnimation = this.icon.animate([{ transform: currentTransform }, { transform: `rotate(${this.spin}deg)` }], {
       duration: 300,
       easing: "ease-out",
       fill: "forwards",

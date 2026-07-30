@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { createElement, useRef, useState } from "react";
+import { createElement, useEffect, useRef, useState } from "react";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import "jb-icons/arrow";
 import "jb-icons/close";
 import "jb-icons/delete";
@@ -17,10 +18,14 @@ import "./styles.css";
 const iconNames = ["arrow", "arrow-tailed", "close", "delete", "edit", "expand", "eye", "filter", "lorgnette", "refresh", "search", "triangle"] as const;
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
+const spinIconNames = ["arrow", "arrow-tailed", "triangle"] as const;
+const spinDirections = ["up", "right", "down", "left", "inline-start", "inline-end"] as const;
+const spinAngles = [-180, -90, 0, 90, 180, 360] as const;
 
 type IconName = (typeof iconNames)[number];
 type IconSize = (typeof iconSizes)[number];
 type IconColor = (typeof iconColors)[number];
+type SpinDirection = (typeof spinDirections)[number];
 
 interface IconStoryArgs {
   icon: IconName;
@@ -212,6 +217,76 @@ function AnimationExamples() {
   );
 }
 
+function SpinExamples() {
+  const examples = useRef<HTMLDivElement>(null);
+  const [direction, setDirection] = useState<SpinDirection>("up");
+  const [spin, setSpin] = useState(0);
+
+  useEffect(() => {
+    examples.current?.querySelectorAll<AnimatedIconElement>("[data-spin-icon]").forEach(icon => {
+      icon.spin = spin;
+    });
+  }, [spin]);
+
+  return (
+    <div className="spin-demo" ref={examples}>
+      <header className="spin-demo-header">
+        <div>
+          <h3>Absolute spin</h3>
+          <p>Each angle is measured from the selected original direction. Set the angle to 0° to restore it.</p>
+        </div>
+        <label>
+          Original direction
+          <select value={direction} onChange={event => setDirection(event.target.value as SpinDirection)}>
+            {spinDirections.map(value => (
+              <option value={value} key={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+      </header>
+
+      <div className="spin-angle-control">
+        <label htmlFor="spin-angle">
+          Spin angle
+          <output>{spin}°</output>
+        </label>
+        <input id="spin-angle" type="range" min="-360" max="360" step="15" value={spin} onChange={event => setSpin(event.target.valueAsNumber)} />
+        <fieldset className="spin-presets">
+          <legend>Spin angle presets</legend>
+          <div>
+            {spinAngles.map(angle => (
+              <button type="button" aria-label={`Set spin to ${angle} degrees`} aria-pressed={spin === angle} onClick={() => setSpin(angle)} key={angle}>
+                {angle}°
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      </div>
+
+      <div className="spin-icon-grid">
+        {spinIconNames.map(icon =>
+          createElement(
+            "section",
+            { className: "spin-icon-card", key: icon },
+            createElement(`jb-icon-${icon}`, {
+              direction,
+              size: "xl",
+              color: "primary",
+              "data-spin-icon": "",
+              "data-testid": `spin-${icon}`,
+              "aria-label": `${direction} ${icon} with ${spin} degree spin`,
+            }),
+            createElement("strong", null, icon),
+            createElement("code", null, `${direction} + ${spin}°`),
+          ),
+        )}
+      </div>
+    </div>
+  );
+}
+
 const meta: Meta<IconStoryArgs> = {
   title: "Components/JBIcons",
   args: {
@@ -370,4 +445,32 @@ export const Colors: Story = {
 
 export const Animations: Story = {
   render: () => <AnimationExamples />,
+};
+
+export const Spin: Story = {
+  render: () => <SpinExamples />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const icons = spinIconNames.map(icon => canvas.getByTestId(`spin-${icon}`) as AnimatedIconElement);
+
+    await userEvent.click(canvas.getByRole("button", { name: "Set spin to 180 degrees" }));
+    await waitFor(() => {
+      icons.forEach(icon => {
+        expect(icon.spin).toBe(180);
+        const animation = icon.shadowRoot?.querySelector(".spin-icon")?.getAnimations().at(-1);
+        const finalKeyframe = (animation?.effect as KeyframeEffect | null)?.getKeyframes().at(-1);
+        expect(finalKeyframe?.transform).toBe("rotate(180deg)");
+      });
+    });
+
+    await userEvent.click(canvas.getByRole("button", { name: "Set spin to 0 degrees" }));
+    await waitFor(() => {
+      icons.forEach(icon => {
+        expect(icon.spin).toBe(0);
+        const animation = icon.shadowRoot?.querySelector(".spin-icon")?.getAnimations().at(-1);
+        const finalKeyframe = (animation?.effect as KeyframeEffect | null)?.getKeyframes().at(-1);
+        expect(finalKeyframe?.transform).toBe("rotate(0deg)");
+      });
+    });
+  },
 };
