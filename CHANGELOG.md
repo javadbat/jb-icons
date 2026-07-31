@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0] - 2026-07-31
+
+### Added
+
+- Add `round` property to `jb-icon-triangle`
+
 ## [2.1.0] - 2026-07-30
 
 ### Added

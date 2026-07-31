@@ -23,7 +23,7 @@ import "jb-icons/react";
 import "jb-icons/triangle";
 
 export function DisclosureIcon({ isOpen }: { isOpen: boolean }) {
-  return <jb-icon-triangle direction="inline-end" spin={isOpen ? 90 : 0} size="xs" />;
+  return <jb-icon-triangle direction="inline-end" spin={isOpen ? 90 : 0} round={60} size="xs" />;
 }
 ```
 
@@ -37,7 +37,7 @@ ARIA, children, and ref props. It also exposes each icon's public properties:
 | --- | --- |
 | `arrow` | `direction`, `spin`, `end-line` |
 | `arrow-tailed` | `direction`, `spin`, `long` |
-| `triangle` | `direction`, `spin` |
+| `triangle` | `direction`, `spin`, `round` |
 | `delete` | `isOpen` |
 | `edit` | `isActive`, `active` |
 | `expand` | `isExpanded`, `expanded` |

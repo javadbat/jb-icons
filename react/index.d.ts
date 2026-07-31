@@ -36,6 +36,7 @@ export type JBIconArrowTailedAttributes = JBIconAttributes<JBIconArrowTailedWebC
 
 export type JBIconTriangleAttributes = JBIconAttributes<JBIconTriangleWebComponent> & {
   direction?: JBIconDirection;
+  round?:number;
   spin?: number;
 };
 

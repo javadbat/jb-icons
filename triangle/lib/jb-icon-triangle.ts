@@ -1,11 +1,12 @@
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-triangle.css";
 import { renderHTML } from "./render.js";
-
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
+import { getRoundedTriangle } from './utils.js';
+const HTMLElementBase = globalThis.HTMLElement ?? (class { } as typeof HTMLElement);
 
 export class JBIconTriangleWebComponent extends HTMLElementBase {
   readonly icon: SVGGElement;
+  trianglePath: SVGGElement;
   #spin = 0;
   #spinAnimation: Animation | null = null;
 
@@ -17,7 +18,14 @@ export class JBIconTriangleWebComponent extends HTMLElementBase {
     this.#spin = value;
     this.playSpin();
   }
-
+  #round: number = 0;
+  get round() {
+    return this.#round;
+  }
+  set round(value: number) {
+    this.#round = value;
+    this.trianglePath.setAttribute("d", getRoundedTriangle(value));
+  }
   connectedCallback() {
     this.syncDirection();
   }
@@ -38,8 +46,18 @@ export class JBIconTriangleWebComponent extends HTMLElementBase {
     template.innerHTML = `<style>${VariablesCSS}\n${CSS}</style>\n${renderHTML()}`;
     shadowRoot.appendChild(template.content.cloneNode(true));
     this.icon = shadowRoot.querySelector(".spin-icon")!;
+    this.trianglePath = shadowRoot.querySelector(".triangle-path")!;
   }
-
+  static get observedAttributes() {
+    return ['round'];
+  }
+  attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
+    switch (name) {
+      case "round":
+        this.round = Number(newValue ?? 0);
+        break;
+    }
+  }
   playSpin(): Animation {
     const currentTransform = getComputedStyle(this.icon).transform;
     this.#spinAnimation?.cancel();
