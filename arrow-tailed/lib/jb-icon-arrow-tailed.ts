@@ -1,6 +1,7 @@
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-arrow-tailed.css";
 import { renderHTML } from "./render.js";
+import { parseBooleanAttribute } from "jb-core";
 
 const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
 
@@ -10,7 +11,7 @@ export class JBIconArrowTailedWebComponent extends HTMLElementBase {
   #spinAnimation: Animation | null = null;
 
   get long(): boolean {
-    return this.hasAttribute("long");
+    return parseBooleanAttribute(this.getAttribute("long"));
   }
 
   set long(value: boolean) {

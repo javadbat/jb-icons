@@ -2,6 +2,7 @@ import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-expand.css";
 import { renderHTML } from "./render.js";
+import { parseBooleanAttribute } from "jb-core";
 
 const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
@@ -12,7 +13,7 @@ export type JBIconColor = (typeof iconColors)[number];
 
 export class JBIconExpandWebComponent extends HTMLElementBase {
   get isExpanded(): boolean {
-    return this.hasAttribute("expanded");
+    return parseBooleanAttribute(this.getAttribute("expanded"));
   }
 
   set isExpanded(value: boolean) {

@@ -2,6 +2,7 @@ import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-edit.css";
 import { renderHTML } from "./render.js";
 import { registerDefaultVariables } from "jb-core/theme";
+import { parseBooleanAttribute } from "jb-core";
 
 const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
@@ -12,7 +13,7 @@ export type JBIconColor = (typeof iconColors)[number];
 
 export class JBIconEditWebComponent extends HTMLElementBase {
   get isActive(): boolean {
-    return this.hasAttribute("active");
+    return parseBooleanAttribute(this.getAttribute("active"));
   }
 
   set isActive(value: boolean) {

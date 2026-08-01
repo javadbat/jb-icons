@@ -1,12 +1,13 @@
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-eye.css";
 import { renderHTML } from "./render.js";
+import { parseBooleanAttribute } from "jb-core";
 
 const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
 
 export class JBIconEyeWebComponent extends HTMLElementBase {
   get open(): boolean {
-    return this.hasAttribute("open");
+    return parseBooleanAttribute(this.getAttribute("open"));
   }
 
   set open(value: boolean) {
