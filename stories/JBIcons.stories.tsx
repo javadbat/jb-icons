@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { createElement, useEffect, useRef, useState } from "react";
+import { createElement, useEffect, useRef, useState, type CSSProperties } from "react";
 import { expect, userEvent, waitFor, within } from "storybook/test";
+import "jb-icons/react";
 import "jb-icons/arrow";
 import "jb-icons/close";
 import "jb-icons/delete";
@@ -317,6 +318,22 @@ export const Playground: Story = {
   ),
 };
 
+export const ReactJsx: Story = {
+  render: () => (
+    <div className="icon-row">
+      <jb-icon-arrow direction="inline-end" size="lg" color="primary" aria-label="React JSX arrow" />
+      <jb-icon-triangle direction="down" size="lg" color="secondary" round={60} aria-label="React JSX triangle" />
+      <jb-icon-eye open size="lg" color="positive" aria-label="React JSX eye" />
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByLabelText("React JSX arrow")).toBeTruthy();
+    expect(canvas.getByLabelText("React JSX triangle")).toBeTruthy();
+    expect(canvas.getByLabelText("React JSX eye")).toBeTruthy();
+  },
+};
+
 export const Gallery: Story = {
   render: () => (
     <div className="icon-gallery">
@@ -441,6 +458,31 @@ export const Colors: Story = {
       ))}
     </div>
   ),
+};
+
+export const StrokeWidths: Story = {
+  render: () => (
+    <div className="icon-row">
+      {[
+        { label: "Thin", value: 48 },
+        { label: "Standard", value: 64 },
+        { label: "Thick", value: 96 },
+      ].map(({ label, value }) => (
+        <div className="icon-variant" key={label}>
+          <jb-icon-arrow direction="right" size="xl" color="primary" style={{ "--icon-stroke-width": value } as CSSProperties} aria-label={`${label} stroke`} />
+          <code>
+            {label} ({value})
+          </code>
+        </div>
+      ))}
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    for (const label of ["Thin", "Standard", "Thick"]) {
+      expect(canvas.getByLabelText(`${label} stroke`)).toBeTruthy();
+    }
+  },
 };
 
 export const Animations: Story = {

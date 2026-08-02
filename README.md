@@ -10,13 +10,14 @@ jb-icon has no default export. it has some sub folder each contain one icon. to 
 
 ## Demo
 
-- [Storybook](https://javadbat.github.io/design-system/?path=/story/components-jbicons--gallery)
+- [Demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--overview)
+- [Icon gallery](https://javadbat.github.io/design-system/?path=/story/components-jbicons--gallery)
 
 ## React JSX types
 
 React applications can opt in to JSX declarations for every icon with one
 type-only helper import. Continue importing each icon separately so only the
-icons used by the application are registered and bundled:
+icons used by the application are registered and bundled. See the [React JSX demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--react-jsx).
 
 ```tsx
 import "jb-icons/react";
@@ -55,7 +56,7 @@ width remains automatic and follows the SVG's aspect ratio.
 
 The shared size rules live in `style/variables.css` and are injected into every
 icon component before its icon-specific styles. The resolved height is available
-as the `--icon-size` custom property.
+as the `--icon-size` custom property. Compare the available sizes in the [sizes demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--sizes).
 
 | Size | Default height | CSS custom property |
 | --- | --- | --- |
@@ -93,7 +94,7 @@ the public `--jb-icon-size*` properties when customizing icons.
 
 ## Stroke width
 
-Stroked icons use the shared 1024-unit weight scale from `style/variables.css`:
+Stroked icons use the shared 1024-unit weight scale from `style/variables.css`; the [stroke-width demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--stroke-widths) shows the three weights side by side.
 
 | Weight | SVG units | Internal custom property |
 | --- | ---: | --- |
@@ -106,7 +107,7 @@ reserved for secondary details and intentional visual emphasis.
 
 ## Color
 
-Icons inherit the surrounding text color by default through `currentColor`:
+Icons inherit the surrounding text color by default through `currentColor`. See every theme variant in the [colors demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--colors):
 
 ```html
 <div style="color: rebeccapurple">
@@ -148,6 +149,8 @@ icon uses `--jb-icon-color` and falls back directly to `currentColor`.
 
 ### Arrow-tailed icon
 
+The [gallery demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--gallery) shows the short and long tail alongside every supported direction.
+
 Import the tailed arrow from its submodule:
 
 ```js
@@ -168,6 +171,8 @@ arrow.long = true;
 ```
 
 ### Lorgnette icon
+
+The [gallery demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--gallery) includes the lorgnette with the shared size and color variants.
 
 Import the lorgnette icon from its submodule:
 
@@ -191,6 +196,8 @@ jb-icon-lorgnette {
 
 ### Expand icon
 
+Try its expanded and collapsed states in the [animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations).
+
 Import the expand icon from its submodule:
 
 ```js
@@ -205,6 +212,8 @@ expandIcon.isExpanded = true;
 ```
 
 ### Edit icon
+
+Try its active and resting states in the [animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations).
 
 Import the edit icon from its submodule:
 
@@ -237,6 +246,8 @@ editIcon.isActive = true;
 
 ### Delete icon
 
+Try its open and closed lid states in the [animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations).
+
 Import the delete icon from its submodule:
 
 ```js
@@ -266,6 +277,8 @@ and keep `isOpen` synchronized.
 
 ### Refresh icon
 
+Try its loading state in the [animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations).
+
 Import the refresh icon from its submodule:
 
 ```js
@@ -290,6 +303,8 @@ refreshIcon.isLoading = false;
 ```
 
 ### Search icon
+
+Try its loading state in the [animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations).
 
 Import the search icon from its submodule:
 
@@ -318,6 +333,8 @@ searchIcon.isLoading = false;
 
 ### Eye icon
 
+Try its open and closed states in the [animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations).
+
 Import the eye icon from its submodule and use the `open` attribute or property
 to switch between hidden and visible states:
 
@@ -336,6 +353,8 @@ eye.open = true;
 ```
 ## Related Docs
 
+- See the [React JSX documentation](https://javadbat.github.io/design-system/?path=/story/components-jbicons-react-readme--docs) for typed JSX usage.
+- See the [`jb-icons/react` README](./react/README.md) for React-specific guidance.
 - See [All JB Design System Component List](https://javadbat.github.io/design-system/) for more components.
 - Use [Contribution Guide](https://github.com/javadbat/design-system/blob/main/docs/contribution-guide.md) if you want to contribute to this component.
 
