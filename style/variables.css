@@ -64,5 +64,5 @@
 
 :host([color="dark"]) {
   --icon-color: var(--jb-icon-color-dark, var(--jb-neutral, currentColor));
-  --icon-color-complementary: var(--jb-icon-color-complementary-dark, var(--jb-icon-color-complementary, var(--jb-neutral-10)));
+  --icon-color-complementary: var(--jb-icon-color-complementary-dark, var(--jb-icon-color-complementary, var(--jb-content-inverse)));
 }
