@@ -1,4 +1,1 @@
-declare module "*.css" {
-  const content: string;
-  export default content;
-}
+// CSS imports are declared by jb-core/configs/global.d.ts.
