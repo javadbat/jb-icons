@@ -2,16 +2,15 @@ import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-expand.css";
 import { renderHTML } from "./render.js";
-import { parseBooleanAttribute } from "jb-core";
+import { JBBaseComponent, parseBooleanAttribute } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 
 export type JBIconSize = (typeof iconSizes)[number];
 export type JBIconColor = (typeof iconColors)[number];
 
-export class JBIconExpandWebComponent extends HTMLElementBase {
+export class JBIconExpandWebComponent extends JBBaseComponent {
   get isExpanded(): boolean {
     return parseBooleanAttribute(this.getAttribute("expanded"));
   }
@@ -56,8 +55,8 @@ export class JBIconExpandWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-expand")) {
-  window.customElements.define("jb-icon-expand", JBIconExpandWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-expand")) {
+  globalThis.customElements.define("jb-icon-expand", JBIconExpandWebComponent);
 }
 
 declare global {

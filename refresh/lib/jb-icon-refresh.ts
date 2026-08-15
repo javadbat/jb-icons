@@ -2,10 +2,9 @@ import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-refresh.css";
 import { renderHTML } from "./render.js";
+import { JBBaseComponent } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
-
-export class JBIconRefreshWebComponent extends HTMLElementBase {
+export class JBIconRefreshWebComponent extends JBBaseComponent {
   #isLoading = false;
   readonly icon: SVGGElement;
   readonly animation: Animation;
@@ -43,8 +42,8 @@ export class JBIconRefreshWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-refresh")) {
-  window.customElements.define("jb-icon-refresh", JBIconRefreshWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-refresh")) {
+  globalThis.customElements.define("jb-icon-refresh", JBIconRefreshWebComponent);
 }
 
 declare global {

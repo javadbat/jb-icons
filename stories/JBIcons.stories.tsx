@@ -10,13 +10,15 @@ import "jb-icons/expand";
 import "jb-icons/eye";
 import "jb-icons/filter";
 import "jb-icons/lorgnette";
+import "jb-icons/minus";
+import "jb-icons/plus";
 import "jb-icons/refresh";
 import "jb-icons/search";
 import "jb-icons/arrow-tailed";
 import "jb-icons/triangle";
 import "./styles.css";
 
-const iconNames = ["arrow", "arrow-tailed", "close", "delete", "edit", "expand", "eye", "filter", "lorgnette", "refresh", "search", "triangle"] as const;
+const iconNames = ["arrow", "arrow-tailed", "close", "delete", "edit", "expand", "eye", "filter", "lorgnette", "minus", "plus", "refresh", "search", "triangle"] as const;
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 const spinIconNames = ["arrow", "arrow-tailed", "triangle"] as const;
@@ -324,6 +326,8 @@ export const ReactJsx: Story = {
       <jb-icon-arrow direction="inline-end" size="lg" color="primary" aria-label="React JSX arrow" />
       <jb-icon-triangle direction="down" size="lg" color="secondary" round={60} aria-label="React JSX triangle" />
       <jb-icon-eye open size="lg" color="positive" aria-label="React JSX eye" />
+      <jb-icon-plus size="lg" color="positive" aria-label="React JSX plus" />
+      <jb-icon-minus size="lg" color="danger" aria-label="React JSX minus" />
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -331,6 +335,8 @@ export const ReactJsx: Story = {
     expect(canvas.getByLabelText("React JSX arrow")).toBeTruthy();
     expect(canvas.getByLabelText("React JSX triangle")).toBeTruthy();
     expect(canvas.getByLabelText("React JSX eye")).toBeTruthy();
+    expect(canvas.getByLabelText("React JSX plus")).toBeTruthy();
+    expect(canvas.getByLabelText("React JSX minus")).toBeTruthy();
   },
 };
 
@@ -421,6 +427,14 @@ export const Gallery: Story = {
       <div className="icon-gallery-item">
         <Icon icon="lorgnette" size="xl" />
         <code>jb-icon-lorgnette</code>
+      </div>
+      <div className="icon-gallery-item">
+        <Icon icon="minus" size="xl" />
+        <code>jb-icon-minus</code>
+      </div>
+      <div className="icon-gallery-item">
+        <Icon icon="plus" size="xl" />
+        <code>jb-icon-plus</code>
       </div>
       <div className="icon-gallery-item">
         <HoverAnimatedIcon icon="refresh" size="xl" />

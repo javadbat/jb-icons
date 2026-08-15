@@ -2,9 +2,9 @@ import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-triangle.css";
 import { renderHTML } from "./render.js";
 import { getRoundedTriangle } from './utils.js';
-const HTMLElementBase = globalThis.HTMLElement ?? (class { } as typeof HTMLElement);
+import { JBBaseComponent } from "jb-core";
 
-export class JBIconTriangleWebComponent extends HTMLElementBase {
+export class JBIconTriangleWebComponent extends JBBaseComponent {
   readonly icon: SVGGElement;
   trianglePath: SVGGElement;
   #spin = 0;
@@ -70,8 +70,8 @@ export class JBIconTriangleWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-triangle")) {
-  window.customElements.define("jb-icon-triangle", JBIconTriangleWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-triangle")) {
+  globalThis.customElements.define("jb-icon-triangle", JBIconTriangleWebComponent);
 }
 
 declare global {

@@ -1,10 +1,16 @@
 # Changelog
 
-## Unreleased
+## [2.3.0] - 2026 - 08-15
 
 ### Changed
 
 - Updated component color defaults to use the shared semantic content and surface tokens.
+- Migrated every icon to the shared SSR-safe `JBBaseComponent` and guarded custom-element registration so icon modules can be imported without browser globals.
+- Updated the minimum `jb-core` dependency to `0.34.0` and externalized its runtime entry points from icon bundles.
+
+### Added
+
+- Added `jb-icon-plus` and `jb-icon-minus` for number input controls.
 
 ## [2.2.0] - 2026-07-31
 

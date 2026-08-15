@@ -1,10 +1,9 @@
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-close.css";
 import { renderHTML } from "./render.js";
+import { JBBaseComponent } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
-
-export class JBIconCloseWebComponent extends HTMLElementBase {
+export class JBIconCloseWebComponent extends JBBaseComponent {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({
@@ -18,8 +17,8 @@ export class JBIconCloseWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-close")) {
-  window.customElements.define("jb-icon-close", JBIconCloseWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-close")) {
+  globalThis.customElements.define("jb-icon-close", JBIconCloseWebComponent);
 }
 
 declare global {

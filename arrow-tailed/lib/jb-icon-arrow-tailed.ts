@@ -1,11 +1,9 @@
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-arrow-tailed.css";
 import { renderHTML } from "./render.js";
-import { parseBooleanAttribute } from "jb-core";
+import { JBBaseComponent, parseBooleanAttribute } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
-
-export class JBIconArrowTailedWebComponent extends HTMLElementBase {
+export class JBIconArrowTailedWebComponent extends JBBaseComponent {
   readonly icon: SVGGElement;
   #spin = 0;
   #spinAnimation: Animation | null = null;
@@ -61,8 +59,8 @@ export class JBIconArrowTailedWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-arrow-tailed")) {
-  window.customElements.define("jb-icon-arrow-tailed", JBIconArrowTailedWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-arrow-tailed")) {
+  globalThis.customElements.define("jb-icon-arrow-tailed", JBIconArrowTailedWebComponent);
 }
 
 declare global {

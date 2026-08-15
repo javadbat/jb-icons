@@ -6,7 +6,9 @@
 ![GitHub Created At](https://img.shields.io/github/created-at/javadbat/jb-icons)
 
 Icon component for the JB Design System.
-jb-icon has no default export. it has some sub folder each contain one icon. to make it ssr friendly we create all jb-icons in declarative web-component.
+jb-icon has no default export. it has some sub folder each contain one icon.
+
+Every icon extends the SSR-safe `JBBaseComponent`, and custom-element registration is guarded. Icon submodules can therefore be imported while rendering in Node.js environments such as Next.js or Astro without requiring `HTMLElement`, `window`, or `customElements`. Their shadow DOM and animations initialize only when the elements are upgraded in a browser.
 
 ## Demo
 
@@ -146,6 +148,23 @@ JB theme color, and finally `currentColor`. Without a `color` attribute, the
 icon uses `--jb-icon-color` and falls back directly to `currentColor`.
 
 ## Icons
+
+### Plus and minus icons
+
+Import the number control icons from their submodules:
+
+```js
+import "jb-icons/plus";
+import "jb-icons/minus";
+```
+
+Both icons use the standard 1024-unit view box, stroke weight, size variants,
+and color variants:
+
+```html
+<jb-icon-plus size="sm" color="positive"></jb-icon-plus>
+<jb-icon-minus size="sm" color="danger"></jb-icon-minus>
+```
 
 ### Arrow-tailed icon
 

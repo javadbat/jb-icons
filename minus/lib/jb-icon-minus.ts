@@ -1,6 +1,6 @@
 import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
-import CSS from "./jb-icon-delete.css";
+import CSS from "./jb-icon-minus.css";
 import { renderHTML } from "./render.js";
 import { JBBaseComponent } from "jb-core";
 
@@ -10,24 +10,7 @@ const iconColors = ["primary", "secondary", "positive", "danger", "warning", "li
 export type JBIconSize = (typeof iconSizes)[number];
 export type JBIconColor = (typeof iconColors)[number];
 
-export class JBIconDeleteWebComponent extends JBBaseComponent {
-  readonly door: SVGGElement;
-  #isOpen = false;
-  #doorAnimation: Animation | null = null;
-
-  get isOpen(): boolean {
-    return this.#isOpen;
-  }
-
-  set isOpen(value: boolean) {
-    if (this.#isOpen === value) return;
-    if (value) {
-      this.playOpenAnimation();
-    } else {
-      this.playCloseAnimation();
-    }
-  }
-
+export class JBIconMinusWebComponent extends JBBaseComponent {
   get size(): JBIconSize {
     const size = this.getAttribute("size");
     return iconSizes.includes(size as JBIconSize) ? (size as JBIconSize) : "md";
@@ -61,42 +44,15 @@ export class JBIconDeleteWebComponent extends JBBaseComponent {
     const template = document.createElement("template");
     template.innerHTML = `<style>${VariablesCSS}\n${CSS}</style>\n${renderHTML()}`;
     shadowRoot.appendChild(template.content.cloneNode(true));
-    this.door = shadowRoot.querySelector(".door")!;
-  }
-
-  playOpenAnimation(): Animation {
-    this.#isOpen = true;
-    this.#doorAnimation?.cancel();
-    this.#doorAnimation = this.door.animate([{ transform: "translate(0, 0) rotate(0deg)" }, { transform: "translate(-9rem, -5rem) rotate(-18deg)" }], {
-      id: "open",
-      duration: 200,
-      easing: "ease",
-      fill: "forwards",
-      iterations: 1,
-    });
-    return this.#doorAnimation;
-  }
-
-  playCloseAnimation(): Animation {
-    this.#isOpen = false;
-    this.#doorAnimation?.cancel();
-    this.#doorAnimation = this.door.animate([{ transform: "translate(-9rem, -5rem) rotate(-18deg)" }, { transform: "translate(0, 0) rotate(0deg)" }], {
-      id: "close",
-      duration: 200,
-      easing: "ease",
-      fill: "forwards",
-      iterations: 1,
-    });
-    return this.#doorAnimation;
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-delete")) {
-  globalThis.customElements.define("jb-icon-delete", JBIconDeleteWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-minus")) {
+  globalThis.customElements.define("jb-icon-minus", JBIconMinusWebComponent);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "jb-icon-delete": JBIconDeleteWebComponent;
+    "jb-icon-minus": JBIconMinusWebComponent;
   }
 }

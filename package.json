@@ -6,10 +6,10 @@
     "name": "mohammad javad bathaei",
     "email": "javadbat@gmail.com"
   },
-  "version": "2.2.0",
+  "version": "2.3.0",
   "license": "MIT",
   "dependencies": {
-    "jb-core": "^0.30.0"
+    "jb-core": "^0.34.0"
   },
   "files": [
     "README.md",
@@ -23,6 +23,8 @@
     "filter/",
     "eye/",
     "lorgnette/",
+    "minus/",
+    "plus/",
     "refresh/",
     "search/",
     "arrow-tailed/",
@@ -62,6 +64,14 @@
     "./lorgnette": {
       "types": "./lorgnette/dist/jb-icon-lorgnette.d.ts",
       "default": "./lorgnette/index.js"
+    },
+    "./minus": {
+      "types": "./minus/dist/jb-icon-minus.d.ts",
+      "default": "./minus/index.js"
+    },
+    "./plus": {
+      "types": "./plus/dist/jb-icon-plus.d.ts",
+      "default": "./plus/index.js"
     },
     "./refresh": {
       "types": "./refresh/dist/jb-icon-refresh.d.ts",

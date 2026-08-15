@@ -2,16 +2,15 @@ import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-edit.css";
 import { renderHTML } from "./render.js";
 import { registerDefaultVariables } from "jb-core/theme";
-import { parseBooleanAttribute } from "jb-core";
+import { JBBaseComponent, parseBooleanAttribute } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 
 export type JBIconSize = (typeof iconSizes)[number];
 export type JBIconColor = (typeof iconColors)[number];
 
-export class JBIconEditWebComponent extends HTMLElementBase {
+export class JBIconEditWebComponent extends JBBaseComponent {
   get isActive(): boolean {
     return parseBooleanAttribute(this.getAttribute("active"));
   }
@@ -56,8 +55,8 @@ export class JBIconEditWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-edit")) {
-  window.customElements.define("jb-icon-edit", JBIconEditWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-edit")) {
+  globalThis.customElements.define("jb-icon-edit", JBIconEditWebComponent);
 }
 
 declare global {

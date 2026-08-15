@@ -1,15 +1,15 @@
 import CSS from "./jb-icon-search.css";
 import VariablesCSS from "../../style/variables.css";
 import { renderHTML } from "./render.js";
+import { JBBaseComponent } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 
 export type JBIconSize = (typeof iconSizes)[number];
 export type JBIconColor = (typeof iconColors)[number];
 
-export class JBIconSearchWebComponent extends HTMLElementBase {
+export class JBIconSearchWebComponent extends JBBaseComponent {
   #isLoading = false;
   readonly spinnerLine: SVGPathElement;
   readonly spinnerBox: SVGGElement;
@@ -124,8 +124,8 @@ export class JBIconSearchWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-search")) {
-  window.customElements.define("jb-icon-search", JBIconSearchWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-search")) {
+  globalThis.customElements.define("jb-icon-search", JBIconSearchWebComponent);
 }
 
 declare global {

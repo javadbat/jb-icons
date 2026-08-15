@@ -1,10 +1,9 @@
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-arrow.css";
 import { renderHTML } from "./render.js";
+import { JBBaseComponent } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
-
-export class JBIconArrowWebComponent extends HTMLElementBase {
+export class JBIconArrowWebComponent extends JBBaseComponent {
   readonly icon: SVGGElement;
   #spin = 0;
   #spinAnimation: Animation | null = null;
@@ -52,8 +51,8 @@ export class JBIconArrowWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-arrow")) {
-  window.customElements.define("jb-icon-arrow", JBIconArrowWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-arrow")) {
+  globalThis.customElements.define("jb-icon-arrow", JBIconArrowWebComponent);
 }
 
 declare global {

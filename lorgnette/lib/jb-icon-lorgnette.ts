@@ -2,15 +2,15 @@ import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-lorgnette.css";
 import { renderHTML } from "./render.js";
+import { JBBaseComponent } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 
 export type JBIconSize = (typeof iconSizes)[number];
 export type JBIconColor = (typeof iconColors)[number];
 
-export class JBIconLorgnetteWebComponent extends HTMLElementBase {
+export class JBIconLorgnetteWebComponent extends JBBaseComponent {
   get size(): JBIconSize {
     const size = this.getAttribute("size");
     return iconSizes.includes(size as JBIconSize) ? (size as JBIconSize) : "md";
@@ -47,8 +47,8 @@ export class JBIconLorgnetteWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-lorgnette")) {
-  window.customElements.define("jb-icon-lorgnette", JBIconLorgnetteWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-lorgnette")) {
+  globalThis.customElements.define("jb-icon-lorgnette", JBIconLorgnetteWebComponent);
 }
 
 declare global {

@@ -1,11 +1,9 @@
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-eye.css";
 import { renderHTML } from "./render.js";
-import { parseBooleanAttribute } from "jb-core";
+import { JBBaseComponent, parseBooleanAttribute } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
-
-export class JBIconEyeWebComponent extends HTMLElementBase {
+export class JBIconEyeWebComponent extends JBBaseComponent {
   get open(): boolean {
     return parseBooleanAttribute(this.getAttribute("open"));
   }
@@ -27,8 +25,8 @@ export class JBIconEyeWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-eye")) {
-  window.customElements.define("jb-icon-eye", JBIconEyeWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-eye")) {
+  globalThis.customElements.define("jb-icon-eye", JBIconEyeWebComponent);
 }
 
 declare global {

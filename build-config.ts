@@ -1,7 +1,32 @@
 import type { ReactComponentBuildConfig, WebComponentBuildConfig } from "../../tasks/build/builder/src/types.ts";
 
+const jbCoreBuildConfig = {
+  external: ["jb-core", "jb-core/theme"],
+  globals: {
+    "jb-core": "JBCore",
+    "jb-core/theme": "JBCoreTheme",
+  },
+};
+
 export const webComponentList: WebComponentBuildConfig[] = [
   {
+    ...jbCoreBuildConfig,
+    name: "jb-icon-plus",
+    path: "./plus/lib/jb-icon-plus.ts",
+    outputPath: "./plus/dist/jb-icon-plus.js",
+    tsConfigPath: "./plus/tsconfig.json",
+    umdName: "JBIconPlus",
+  },
+  {
+    ...jbCoreBuildConfig,
+    name: "jb-icon-minus",
+    path: "./minus/lib/jb-icon-minus.ts",
+    outputPath: "./minus/dist/jb-icon-minus.js",
+    tsConfigPath: "./minus/tsconfig.json",
+    umdName: "JBIconMinus",
+  },
+  {
+    ...jbCoreBuildConfig,
     name: "jb-icon-close",
     path: "./close/lib/jb-icon-close.ts",
     outputPath: "./close/dist/jb-icon-close.js",
@@ -9,6 +34,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconClose",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-arrow",
     path: "./arrow/lib/jb-icon-arrow.ts",
     outputPath: "./arrow/dist/jb-icon-arrow.js",
@@ -16,6 +42,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconArrow",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-expand",
     path: "./expand/lib/jb-icon-expand.ts",
     outputPath: "./expand/dist/jb-icon-expand.js",
@@ -23,6 +50,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconExpand",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-filter",
     path: "./filter/lib/jb-icon-filter.ts",
     outputPath: "./filter/dist/jb-icon-filter.js",
@@ -30,6 +58,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconFilter",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-search",
     path: "./search/lib/jb-icon-search.ts",
     outputPath: "./search/dist/jb-icon-search.js",
@@ -37,6 +66,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconSearch",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-arrow-tailed",
     path: "./arrow-tailed/lib/jb-icon-arrow-tailed.ts",
     outputPath: "./arrow-tailed/dist/jb-icon-arrow-tailed.js",
@@ -44,6 +74,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconArrowTailed",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-triangle",
     path: "./triangle/lib/jb-icon-triangle.ts",
     outputPath: "./triangle/dist/jb-icon-triangle.js",
@@ -51,6 +82,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconTriangle",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-eye",
     path: "./eye/lib/jb-icon-eye.ts",
     outputPath: "./eye/dist/jb-icon-eye.js",
@@ -58,6 +90,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconEye",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-refresh",
     path: "./refresh/lib/jb-icon-refresh.ts",
     outputPath: "./refresh/dist/jb-icon-refresh.js",
@@ -65,6 +98,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconRefresh",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-delete",
     path: "./delete/lib/jb-icon-delete.ts",
     outputPath: "./delete/dist/jb-icon-delete.js",
@@ -72,6 +106,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconDelete",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-edit",
     path: "./edit/lib/jb-icon-edit.ts",
     outputPath: "./edit/dist/jb-icon-edit.js",
@@ -79,6 +114,7 @@ export const webComponentList: WebComponentBuildConfig[] = [
     umdName: "JBIconEdit",
   },
   {
+    ...jbCoreBuildConfig,
     name: "jb-icon-lorgnette",
     path: "./lorgnette/lib/jb-icon-lorgnette.ts",
     outputPath: "./lorgnette/dist/jb-icon-lorgnette.js",

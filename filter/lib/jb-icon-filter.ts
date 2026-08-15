@@ -1,10 +1,9 @@
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-filter.css";
 import { renderHTML } from "./render.js";
+import { JBBaseComponent } from "jb-core";
 
-const HTMLElementBase = globalThis.HTMLElement ?? (class {} as typeof HTMLElement);
-
-export class JBIconFilterWebComponent extends HTMLElementBase {
+export class JBIconFilterWebComponent extends JBBaseComponent {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({
@@ -18,8 +17,8 @@ export class JBIconFilterWebComponent extends HTMLElementBase {
   }
 }
 
-if (typeof window !== "undefined" && !window.customElements.get("jb-icon-filter")) {
-  window.customElements.define("jb-icon-filter", JBIconFilterWebComponent);
+if (globalThis.customElements && !globalThis.customElements.get("jb-icon-filter")) {
+  globalThis.customElements.define("jb-icon-filter", JBIconFilterWebComponent);
 }
 
 declare global {

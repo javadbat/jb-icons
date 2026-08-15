@@ -8,6 +8,8 @@ import type { JBIconExpandWebComponent } from "jb-icons/expand";
 import type { JBIconEyeWebComponent } from "jb-icons/eye";
 import type { JBIconFilterWebComponent } from "jb-icons/filter";
 import type { JBIconLorgnetteWebComponent } from "jb-icons/lorgnette";
+import type { JBIconMinusWebComponent } from "jb-icons/minus";
+import type { JBIconPlusWebComponent } from "jb-icons/plus";
 import type { JBIconRefreshWebComponent } from "jb-icons/refresh";
 import type { JBIconSearchWebComponent } from "jb-icons/search";
 import type { JBIconTriangleWebComponent } from "jb-icons/triangle";
@@ -36,7 +38,7 @@ export type JBIconArrowTailedAttributes = JBIconAttributes<JBIconArrowTailedWebC
 
 export type JBIconTriangleAttributes = JBIconAttributes<JBIconTriangleWebComponent> & {
   direction?: JBIconDirection;
-  round?:number;
+  round?: number;
   spin?: number;
 };
 
@@ -78,6 +80,8 @@ declare module "react" {
       "jb-icon-eye": JBIconEyeAttributes;
       "jb-icon-filter": JBIconAttributes<JBIconFilterWebComponent>;
       "jb-icon-lorgnette": JBIconAttributes<JBIconLorgnetteWebComponent>;
+      "jb-icon-minus": JBIconAttributes<JBIconMinusWebComponent>;
+      "jb-icon-plus": JBIconAttributes<JBIconPlusWebComponent>;
       "jb-icon-refresh": JBIconRefreshAttributes;
       "jb-icon-search": JBIconSearchAttributes;
       "jb-icon-triangle": JBIconTriangleAttributes;
