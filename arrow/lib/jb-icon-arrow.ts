@@ -1,7 +1,7 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-arrow.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 export class JBIconArrowWebComponent extends JBBaseComponent {
   readonly icon: SVGGElement;
@@ -51,9 +51,7 @@ export class JBIconArrowWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-arrow")) {
-  globalThis.customElements.define("jb-icon-arrow", JBIconArrowWebComponent);
-}
+defineWebComponent("jb-icon-arrow", JBIconArrowWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {

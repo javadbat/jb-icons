@@ -1,8 +1,8 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-refresh.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 export class JBIconRefreshWebComponent extends JBBaseComponent {
   #isLoading = false;
@@ -42,9 +42,7 @@ export class JBIconRefreshWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-refresh")) {
-  globalThis.customElements.define("jb-icon-refresh", JBIconRefreshWebComponent);
-}
+defineWebComponent("jb-icon-refresh", JBIconRefreshWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -1,8 +1,8 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-delete.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
@@ -91,9 +91,7 @@ export class JBIconDeleteWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-delete")) {
-  globalThis.customElements.define("jb-icon-delete", JBIconDeleteWebComponent);
-}
+defineWebComponent("jb-icon-delete", JBIconDeleteWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -1,7 +1,7 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-filter.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 export class JBIconFilterWebComponent extends JBBaseComponent {
   constructor() {
@@ -17,9 +17,7 @@ export class JBIconFilterWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-filter")) {
-  globalThis.customElements.define("jb-icon-filter", JBIconFilterWebComponent);
-}
+defineWebComponent("jb-icon-filter", JBIconFilterWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {

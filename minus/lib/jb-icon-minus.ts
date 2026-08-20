@@ -1,8 +1,8 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-minus.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
@@ -47,9 +47,7 @@ export class JBIconMinusWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-minus")) {
-  globalThis.customElements.define("jb-icon-minus", JBIconMinusWebComponent);
-}
+defineWebComponent("jb-icon-minus", JBIconMinusWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {

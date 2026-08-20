@@ -1,8 +1,8 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-lorgnette.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
@@ -47,9 +47,7 @@ export class JBIconLorgnetteWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-lorgnette")) {
-  globalThis.customElements.define("jb-icon-lorgnette", JBIconLorgnetteWebComponent);
-}
+defineWebComponent("jb-icon-lorgnette", JBIconLorgnetteWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -1,8 +1,8 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import { registerDefaultVariables } from "jb-core/theme";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-plus.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
@@ -47,9 +47,7 @@ export class JBIconPlusWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-plus")) {
-  globalThis.customElements.define("jb-icon-plus", JBIconPlusWebComponent);
-}
+defineWebComponent("jb-icon-plus", JBIconPlusWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {

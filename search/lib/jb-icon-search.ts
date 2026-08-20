@@ -1,7 +1,7 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import CSS from "./jb-icon-search.css";
 import VariablesCSS from "../../style/variables.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
@@ -124,9 +124,7 @@ export class JBIconSearchWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-search")) {
-  globalThis.customElements.define("jb-icon-search", JBIconSearchWebComponent);
-}
+defineWebComponent("jb-icon-search", JBIconSearchWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {

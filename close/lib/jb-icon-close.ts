@@ -1,7 +1,7 @@
+import { defineWebComponent, JBBaseComponent } from "jb-core";
 import VariablesCSS from "../../style/variables.css";
 import CSS from "./jb-icon-close.css";
 import { renderHTML } from "./render.js";
-import { JBBaseComponent } from "jb-core";
 
 export class JBIconCloseWebComponent extends JBBaseComponent {
   constructor() {
@@ -17,9 +17,7 @@ export class JBIconCloseWebComponent extends JBBaseComponent {
   }
 }
 
-if (globalThis.customElements && !globalThis.customElements.get("jb-icon-close")) {
-  globalThis.customElements.define("jb-icon-close", JBIconCloseWebComponent);
-}
+defineWebComponent("jb-icon-close", JBIconCloseWebComponent);
 
 declare global {
   interface HTMLElementTagNameMap {
