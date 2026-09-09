@@ -20,6 +20,10 @@ export class JBIconRefreshWebComponent extends JBBaseComponent {
     this.#isLoading = value;
   }
 
+  connectedCallback() {
+    this.dispatchEvent(new CustomEvent("init"));
+  }
+
   constructor() {
     super();
     registerDefaultVariables();

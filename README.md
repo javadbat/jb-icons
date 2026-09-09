@@ -1,5 +1,7 @@
 # jb-icon
 
+`jb-icon-expand` and `jb-icon-refresh` emit a non-bubbling `init` event when connection setup finishes. Register listeners before inserting the element into the document.
+
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jb-icons)
 [![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://raw.githubusercontent.com/javadbat/jb-icons/main/LICENSE)
 [![NPM Version](https://img.shields.io/npm/v/jb-icons)](https://www.npmjs.com/package/jb-icons)

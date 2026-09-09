@@ -1,5 +1,7 @@
 # jb-icons React JSX types
 
+The expand and refresh icons emit `init` after connection setup. The `JBFullscreenIcon` and `JBRefreshIcon` wrappers from `jb-grid/react` use this event to apply props after initialization.
+
 React type declarations for the `jb-icons` web-component family. The runtime
 remains framework-neutral: import each icon submodule you use, then opt into
 the JSX declarations with `jb-icons/react`.

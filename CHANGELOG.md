@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.0] - 2026-09-10
+
+### Added
+
+- Emit `init` after connection setup in expand and refresh icons so grid React wrappers can defer props until initialization finishes.
+
 ## [2.4.0] - 2026-09-03
 
 ### Changed

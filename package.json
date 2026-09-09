@@ -11,10 +11,10 @@
     "pack",
     "web-component"
   ],
-  "version": "2.4.0",
+  "version": "2.5.0",
   "license": "MIT",
   "dependencies": {
-    "jb-core": "^0.36.0"
+    "jb-core": "^0.37.0"
   },
   "files": [
     "README.md",
