@@ -42,7 +42,7 @@ export class JBIconExpandWebComponent extends JBBaseComponent {
   }
 
   connectedCallback() {
-    this.dispatchEvent(new CustomEvent("init"));
+    this.dispatchEvent(new CustomEvent("init", { composed: false }));
   }
 
   constructor() {
