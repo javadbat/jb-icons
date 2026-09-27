@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0] - 2026-09-27
+
+### Added
+
+- Added `jb-icon-check`, a check-mark icon that reuses the shared 1024-unit view box, stroke weight, size variants, and color variants. Its mark keeps the 45° shape of the `jb-checkbox` check mark.
+- Added the `isChecked` property, the reflected `unchecked` attribute to `jb-icon-check`. The mark is drawn in two strokes like a hand-written check (short stroke, pause at the corner, long stroke) with press feedback, and is erased back to nothing; both animations end in an instant when the user prefers reduced motion.
+
 ## [2.5.0] - 2026-09-10
 
 ### Added

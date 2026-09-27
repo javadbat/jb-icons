@@ -43,6 +43,7 @@ ARIA, children, and ref props. It also exposes each icon's public properties:
 | `arrow` | `direction`, `spin`, `end-line` |
 | `arrow-tailed` | `direction`, `spin`, `long` |
 | `triangle` | `direction`, `spin`, `round` |
+| `check` | `isChecked`, `checked` |
 | `delete` | `isOpen` |
 | `edit` | `isActive`, `active` |
 | `expand` | `isExpanded`, `expanded` |
@@ -167,6 +168,64 @@ and color variants:
 <jb-icon-plus size="sm" color="positive"></jb-icon-plus>
 <jb-icon-minus size="sm" color="danger"></jb-icon-minus>
 ```
+
+### Check icon
+
+Import the check icon from its submodule:
+
+```js
+import "jb-icons/check";
+```
+
+The check draws its mark like a pen stroke and erases it back to nothing. It uses
+the shared 1024-unit view box, stroke weight, size variants, and color variants,
+and its mark keeps the same 45° shape as the `jb-checkbox` check mark:
+
+```html
+<jb-icon-check></jb-icon-check>
+<jb-icon-check checked></jb-icon-check>
+<jb-icon-check size="sm" color="positive"></jb-icon-check>
+```
+
+Switch between the two animations with the `isChecked` property, or call the
+methods directly when you need the returned animation:
+
+```js
+const checkIcon = document.querySelector("jb-icon-check");
+
+// draws the mark
+checkIcon.isChecked = true;
+
+// erases it back to nothing
+checkIcon.isChecked = false;
+
+// or play a specific animation and await it
+await checkIcon.playCheckAnimation().finished;
+await checkIcon.playUncheckAnimation().finished;
+```
+
+| Member | Type | Description |
+| --- | --- | --- |
+| `isChecked` | `boolean` | Switches between the check and uncheck animations and reflects the `checked` attribute. |
+| `checked` | attribute | Declarative form of `isChecked`. |
+| `playCheckAnimation()` | `() => Animation` | Draws the mark from nothing and returns the mark animation. |
+| `playUncheckAnimation()` | `() => Animation` | Erases the mark back to nothing and returns the mark animation. |
+
+`playCheckAnimation()` always draws from nothing and `playUncheckAnimation()`
+always erases from the fully drawn mark, so both methods also work as replays.
+When an animation is still running, the next one continues from its current
+position instead of snapping. Both methods keep `isChecked` synchronized.
+
+Markup that already contains `checked` renders the whole mark without animating,
+which keeps server-rendered and framework-rendered icons stable. Call
+`playCheckAnimation()` when you also want the draw to play on the first render.
+
+The draw copies the rhythm of a hand-written check: the short stroke is written
+first with an ease-out, the pen pauses briefly at the corner, and the long stroke
+follows with a slow start, a swift middle, and a soft landing at the tip. The two
+strokes take 420ms and a press feedback peaks as the tip lands; the erase wipes
+the long stroke away first and the short one last in 280ms. When the user prefers
+reduced motion, both animations jump straight to their end state.
 
 ### Arrow-tailed icon
 

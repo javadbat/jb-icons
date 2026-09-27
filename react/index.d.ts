@@ -1,6 +1,7 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 import type { JBIconArrowWebComponent } from "jb-icons/arrow";
 import type { JBIconArrowTailedWebComponent } from "jb-icons/arrow-tailed";
+import type { JBIconCheckWebComponent } from "jb-icons/check";
 import type { JBIconCloseWebComponent } from "jb-icons/close";
 import type { JBIconDeleteWebComponent } from "jb-icons/delete";
 import type { JBIconEditWebComponent } from "jb-icons/edit";
@@ -34,6 +35,11 @@ export type JBIconArrowTailedAttributes = JBIconAttributes<JBIconArrowTailedWebC
   direction?: JBIconDirection;
   spin?: number;
   long?: boolean;
+};
+
+export type JBIconCheckAttributes = JBIconAttributes<JBIconCheckWebComponent> & {
+  isChecked?: boolean;
+  checked?: boolean;
 };
 
 export type JBIconTriangleAttributes = JBIconAttributes<JBIconTriangleWebComponent> & {
@@ -73,6 +79,7 @@ declare module "react" {
     interface IntrinsicElements {
       "jb-icon-arrow": JBIconArrowAttributes;
       "jb-icon-arrow-tailed": JBIconArrowTailedAttributes;
+      "jb-icon-check": JBIconCheckAttributes;
       "jb-icon-close": JBIconAttributes<JBIconCloseWebComponent>;
       "jb-icon-delete": JBIconDeleteAttributes;
       "jb-icon-edit": JBIconEditAttributes;

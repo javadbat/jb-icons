@@ -1,0 +1,31 @@
+:host {
+  display: inline-block;
+  aspect-ratio: 1;
+  line-height: 0;
+}
+
+svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  box-sizing: border-box;
+  fill: none;
+  stroke: var(--icon-color);
+  stroke-width: var(--icon-stroke-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/*the unchecked mark stays hidden behind its own dash length, so it can be drawn from nothing*/
+.check-mark {
+  stroke-dasharray: var(--icon-check-mark-length, 906);
+  transform-box: fill-box;
+  transform-origin: center;
+  stroke-dashoffset: 0;
+}
+
+/*markup that arrives checked shows the whole mark without waiting for an animation*/
+:host([unchecked]) .check-mark {
+  stroke-dashoffset: var(--icon-check-mark-length, 906);
+  
+}

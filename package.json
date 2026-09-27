@@ -11,7 +11,7 @@
     "pack",
     "web-component"
   ],
-  "version": "2.5.0",
+  "version": "2.6.0",
   "license": "MIT",
   "dependencies": {
     "jb-core": "^0.37.0"
@@ -21,6 +21,7 @@
     "CHANGELOG.md",
     "style/",
     "arrow/",
+    "check/",
     "close/",
     "delete/",
     "edit/",
@@ -41,6 +42,10 @@
     "./arrow": {
       "types": "./arrow/dist/jb-icon-arrow.d.ts",
       "default": "./arrow/index.js"
+    },
+    "./check": {
+      "types": "./check/dist/jb-icon-check.d.ts",
+      "default": "./check/index.js"
     },
     "./close": {
       "types": "./close/dist/jb-icon-close.d.ts",

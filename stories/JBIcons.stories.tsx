@@ -3,6 +3,7 @@ import { createElement, useEffect, useRef, useState, type CSSProperties } from "
 import { expect, userEvent, waitFor, within } from "storybook/test";
 import "jb-icons/react";
 import "jb-icons/arrow";
+import "jb-icons/check";
 import "jb-icons/close";
 import "jb-icons/delete";
 import "jb-icons/edit";
@@ -18,7 +19,7 @@ import "jb-icons/arrow-tailed";
 import "jb-icons/triangle";
 import "./styles.css";
 
-const iconNames = ["arrow", "arrow-tailed", "close", "delete", "edit", "expand", "eye", "filter", "lorgnette", "minus", "plus", "refresh", "search", "triangle"] as const;
+const iconNames = ["arrow", "arrow-tailed", "check", "close", "delete", "edit", "expand", "eye", "filter", "lorgnette", "minus", "plus", "refresh", "search", "triangle"] as const;
 const iconSizes = ["xs", "sm", "md", "lg", "xl"] as const;
 const iconColors = ["primary", "secondary", "positive", "danger", "warning", "light", "dark"] as const;
 const spinIconNames = ["arrow", "arrow-tailed", "triangle"] as const;
@@ -41,6 +42,7 @@ type AnimatedIconElement = HTMLElement & {
   isOpen: boolean;
   isActive: boolean;
   isExpanded: boolean;
+  isChecked: boolean;
   open: boolean;
   isLoading: boolean;
   spin: number;
@@ -95,6 +97,7 @@ function AnimationExamples() {
   const [eyeOpen, setEyeOpen] = useState(false);
   const [refreshLoading, setRefreshLoading] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [checkChecked, setCheckChecked] = useState(false);
 
   const toggleEye = () => {
     const nextValue = !eyeOpen;
@@ -138,9 +141,16 @@ function AnimationExamples() {
     if (icon) icon.isLoading = nextValue;
   };
 
+  const toggleCheck = () => {
+    const nextValue = !checkChecked;
+    setCheckChecked(nextValue);
+    const icon = examples.current?.querySelector<HTMLElement & { isChecked: boolean }>("jb-icon-check");
+    if (icon) icon.isChecked = nextValue;
+  };
+
   const spinIcon = (selector: "jb-icon-arrow" | "jb-icon-arrow-tailed" | "jb-icon-triangle") => {
     const icon = examples.current?.querySelector<AnimatedIconElement>(selector);
-    if (icon) icon.spin = 180;
+    if (icon) icon.spin = icon.spin?0:180;
   };
 
   return (
@@ -190,6 +200,14 @@ function AnimationExamples() {
         <strong>Search</strong>
         <button type="button" onClick={toggleSearch}>
           {searchLoading ? "Stop" : "Start"}
+        </button>
+      </section>
+
+      <section className="icon-action-card">
+        <Icon icon="check" size="xl" color="positive" />
+        <strong>Check</strong>
+        <button type="button" onClick={toggleCheck}>
+          {checkChecked ? "Uncheck" : "Check"}
         </button>
       </section>
 
@@ -326,6 +344,7 @@ export const ReactJsx: Story = {
       <jb-icon-arrow direction="inline-end" size="lg" color="primary" aria-label="React JSX arrow" />
       <jb-icon-triangle direction="down" size="lg" color="secondary" round={60} aria-label="React JSX triangle" />
       <jb-icon-eye open size="lg" color="positive" aria-label="React JSX eye" />
+      <jb-icon-check isChecked size="lg" color="positive" aria-label="React JSX check" />
       <jb-icon-plus size="lg" color="positive" aria-label="React JSX plus" />
       <jb-icon-minus size="lg" color="danger" aria-label="React JSX minus" />
     </div>
@@ -335,6 +354,7 @@ export const ReactJsx: Story = {
     expect(canvas.getByLabelText("React JSX arrow")).toBeTruthy();
     expect(canvas.getByLabelText("React JSX triangle")).toBeTruthy();
     expect(canvas.getByLabelText("React JSX eye")).toBeTruthy();
+    expect(canvas.getByLabelText("React JSX check")).toBeTruthy();
     expect(canvas.getByLabelText("React JSX plus")).toBeTruthy();
     expect(canvas.getByLabelText("React JSX minus")).toBeTruthy();
   },
@@ -399,6 +419,10 @@ export const Gallery: Story = {
           {createElement("jb-icon-triangle", { direction: "inline-end", size: "xl", "aria-label": "inline-end triangle" })}
         </div>
         <code>jb-icon-triangle</code>
+      </div>
+      <div className="icon-gallery-item">
+        <Icon icon="check" size="xl" />
+        <code>jb-icon-check</code>
       </div>
       <div className="icon-gallery-item">
         <HoverAnimatedIcon icon="close" size="xl" />
@@ -501,6 +525,32 @@ export const StrokeWidths: Story = {
 
 export const Animations: Story = {
   render: () => <AnimationExamples />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkIcon = canvas.getByLabelText("check icon") as AnimatedIconElement;
+    const markOffsets = (animationId: string) => {
+      const animation = checkIcon.shadowRoot
+        ?.querySelector(".check-mark")
+        ?.getAnimations()
+        .filter(item => item.id === animationId)
+        .at(-1);
+      return ((animation?.effect as KeyframeEffect | null)?.getKeyframes() ?? []).map(keyframe => Number.parseFloat(String(keyframe.strokeDashoffset)));
+    };
+
+    await userEvent.click(canvas.getByRole("button", { name: "Check" }));
+    await waitFor(() => {
+      expect(checkIcon.isChecked).toBe(true);
+      //a short stroke into the corner, a pause, then the long stroke
+      expect(markOffsets("check")).toEqual([906, 634, 634, 0]);
+    });
+
+    await userEvent.click(canvas.getByRole("button", { name: "Uncheck" }));
+    await waitFor(() => {
+      expect(checkIcon.isChecked).toBe(false);
+      //the long stroke is wiped away first, then the short one
+      expect(markOffsets("uncheck")).toEqual([0, 634, 634, 906]);
+    });
+  },
 };
 
 export const Spin: Story = {

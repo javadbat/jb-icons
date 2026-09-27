@@ -69,6 +69,7 @@ Every icon accepts standard HTML, ARIA, `children`, `class`, `ref`, `size`, and
 | `jb-icon-arrow` | `direction`, `spin`, `end-line` | [Gallery demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--gallery) |
 | `jb-icon-arrow-tailed` | `direction`, `spin`, `long` | [Gallery demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--gallery) |
 | `jb-icon-triangle` | `direction`, `spin`, `round` | [React JSX demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--react-jsx) |
+| `jb-icon-check` | `isChecked`, `checked` | [Animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations) |
 | `jb-icon-delete` | `isOpen` | [Animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations) |
 | `jb-icon-edit` | `isActive`, `active` | [Animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations) |
 | `jb-icon-expand` | `isExpanded`, `expanded` | [Animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations) |
@@ -86,7 +87,8 @@ Arrow and triangle icons support logical and physical directions. Their numeric
 Set the icon-specific state prop from React state to drive the built-in
 animations. For example, `isOpen` controls the delete lid, `isActive` controls
 the edit underline, `isExpanded` controls expand/collapse, `open` controls the
-eye, and `isLoading` controls refresh/search loading. See the [animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations).
+eye, `isLoading` controls refresh/search loading, and `isChecked` draws or erases
+the check mark. See the [animation demo](https://javadbat.github.io/design-system/?path=/story/components-jbicons--animations).
 
 ## Styling
 
